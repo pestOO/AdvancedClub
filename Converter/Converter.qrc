@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Player_ru.qm</file>
+        <file alias="icon.ico">res/advance.ico</file>
+        <file>icons/music_folder.ico</file>
+        <file>icons/text.ico</file>
+        <file>icons/generate_text_file.ico</file>
+        <file>icons/convert.ico</file>
+        <file>qt_ru.qm</file>
+        <file>icons/split.ico</file>
+        <file>icons/outpute_folder.ico</file>
+    </qresource>
+</RCC>
