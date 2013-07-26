@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>Player_ru.qm</file>
+        <file>Converter_ru.qm</file>
         <file alias="icon.ico">res/advance.ico</file>
         <file>icons/music_folder.ico</file>
         <file>icons/text.ico</file>

@@ -15,7 +15,7 @@
 #include <QMessageBox>
 #include "DialogTiming.h"
 namespace Ui {
-        class PlayerMainWindow;
+        class MainWindow;
     }
 class MainWindow : public QMainWindow
 {
@@ -43,7 +43,7 @@ protected:
     void addSilenseFromUI(QTextStream& stream) const;
     QSet<Timing> loadSilense(QTextStream & stream);
 private:
-    Ui::PlayerMainWindow *ui;
+    Ui::MainWindow *ui;
     QStringList textFiles;
     QString inputeAudioDirWay, outputeAudioDirWay;
     void sox(const QStringList & args) const;
