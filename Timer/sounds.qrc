@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Timer_ru.qm</file>
+        <file alias="icon.ico">res/advance.ico</file>
+    </qresource>
+</RCC>
