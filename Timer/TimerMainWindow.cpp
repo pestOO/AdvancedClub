@@ -9,7 +9,6 @@
 ****************************************************************************/
 #include "TimerMainWindow.h"
 #include "ui_TimerMainWindow.h"
-#include <QSound>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFontDialog>
@@ -44,18 +43,20 @@ TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new 
     ui->labelWord->setFont(settings.value(settingWordFont, wordFont).value<QFont>());
 
     ui->labelWord->setText(QLatin1Literal(""));
-    setLabelTime();
+    updatetLabelTime();
     enableButtons(false);
     adjustSize();
     updateTimer->setInterval(100);
     updateTimer->setSingleShot(false);
-    mainTimer->stop ();
+    taskTimer->stop ();
+    setAudioFile(soundWay);
     if(!QFile::exists (soundWay))
         QMessageBox::warning (this, tr("No sound"),
                               tr("Coudn't find file %1%2Choose another one!").
                               arg(soundWay).arg(QChar(QChar::LineFeed)));
-    connect (updateTimer,   &QTimer::timeout, this, &TimerMainWindow::setLabelTime);
-    connect (mainTimer,     &QTimer::timeout, this, &TimerMainWindow::tick);
+    connect (updateTimer,   &QTimer::timeout, this, &TimerMainWindow::updatetLabelTime);
+    connect (taskTimer,     &QTimer::timeout, this, &TimerMainWindow::tick);
+    connect (&player,   SIGNAL(error(QMediaPlayer::Error)), this, SLOT(showPlayerError(QMediaPlayer::Error)));
     }
 TimerMainWindow::~TimerMainWindow()
     {
@@ -76,22 +77,28 @@ void TimerMainWindow::enableButtons(const bool isRunning)
     ui->actionStart->setVisible (!isRunning);
     ui->actionStop-> setVisible(isRunning);
     }
-void TimerMainWindow::setLabelTime()
+void TimerMainWindow::showPlayerError(QMediaPlayer::Error err)
     {
-    const QTime time =
-            QTime(0,0).addMSecs(
-                updateTimer->isActive() ? mainTimer->remainingTime() : getSecsByBoxs()*1000);
+    qWarning() << err << player.errorString();
+    }
+void TimerMainWindow::setLabelTime(const int mSecs)
+    {
+    const QTime time = QTime(0,0).addMSecs(mSecs );
     ui->labelTime->setText(time.toString(QLatin1Literal("m:ss.zzz")));
-    if(updateTimer->isActive())
-        {
-        ui->progressBar->setMaximum(mainTimer->interval());
-        ui->progressBar->setValue(mainTimer->remainingTime());
-        }
-    else
+    }
+void TimerMainWindow::updatetLabelTime()
+    {
+    //for active timer
+    if(taskTimer->isActive())
+        //update label with secs
+        setLabelTime(taskTimer->remainingTime());
+    if(!updateTimer->isActive())
         {
         ui->progressBar->setMaximum(1);
         ui->progressBar->setValue(0);
         }
+    else
+        ui->progressBar->setValue(taskTimer->remainingTime());
     }
 void TimerMainWindow::tick()
     {
@@ -111,7 +118,7 @@ void TimerMainWindow::tick()
         if(!fileTextStream.atEnd ())
             {
             if(ui->checkBoxSoundForWord->isChecked())
-                QSound::play(soundWay);
+                play();
             }
         else {
             on_actionStop_triggered();
@@ -120,26 +127,32 @@ void TimerMainWindow::tick()
             }
         }
     else
-        QSound::play(soundWay);
-    mainTimer->start(getSecsByBoxs()*1000);
-    setLabelTime();
+        play();
+    taskTimer->start(getmSecsByBoxs());
+    updatetLabelTime();
     }
 void TimerMainWindow::on_actionStart_triggered()
     {
     qWarning() << "start";
     textFile.open(QFile::ReadOnly);
     tick();
+    ui->progressBar->setMaximum(taskTimer->interval());
     updateTimer->start();
     enableButtons(true);
     }
 void TimerMainWindow::on_actionStop_triggered()
     {
-    qWarning() << "stop";
-    mainTimer->stop();
+    //on pause - start
+    if(!taskTimer->isActive ())
+        on_buttonPause_clicked ();
+    taskTimer->stop();
     updateTimer->stop();
     textFile.close();
+    player.stop ();
     enableButtons(false);
-    setLabelTime ();
+    updatetLabelTime ();
+    setLabelTime(getmSecsByBoxs());
+    qWarning() << "stop";
     }
 void TimerMainWindow::on_actionExit_triggered()
     {
@@ -154,7 +167,7 @@ void TimerMainWindow::on_actionSelect_audio_triggered()
     if(!newSoundWay.isEmpty())
         {
         settings.setValue (settingSoundWay, newSoundWay);
-        soundWay = newSoundWay;
+        setAudioFile(newSoundWay);
         }
     }
 
@@ -174,7 +187,7 @@ void TimerMainWindow::on_actionChoode_text_file_triggered()
     }
 void TimerMainWindow::on_actionClear_sound_triggered()
     {
-    soundWay = QLatin1Literal("left.wav");
+    setAudioFile (soundWay);
     }
 void TimerMainWindow::on_actionClear_text_file_triggered()
     {
@@ -189,24 +202,36 @@ void TimerMainWindow::on_actionChange_text_font_triggered()
     if(dialog.exec() == QDialog::Accepted)
         ui->labelWord->setFont(dialog.selectedFont());
     }
+qreal TimerMainWindow::getmSecsByBoxs() const
+    {
+    return getSecsByBoxs()*1000;
+    }
 qreal TimerMainWindow::getSecsByBoxs() const
     {
     const int letters = ui->labelWord->text().length();
     return (ui->boxConstSeconds->value() +          /* constant secs */
             ui->boxLetterSeconds->value()*letters);  /* letter time */
     }
+
+void TimerMainWindow::setAudioFile(const QString & file)
+    {
+    player.setMedia(QUrl::fromLocalFile(file));
+    }
+void TimerMainWindow::play()
+    {
+    player.play ();
+    }
 void TimerMainWindow::on_buttonPause_clicked()
     {
-    if(mainTimer->isActive ())
+    if(taskTimer->isActive ())
         {
-        updateTimer->stop ();
-        mainTimer->stop ();
+        pause_left_msecs = taskTimer->remainingTime();
+        taskTimer->stop ();
         ui->buttonPause->setText (tr("Continue"));
         }
     else
         {
-        updateTimer->start ();
-        mainTimer->start ();
+        taskTimer->start (pause_left_msecs);
         ui->buttonPause->setText (tr("Pause"));
         }
     }

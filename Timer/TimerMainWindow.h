@@ -12,6 +12,7 @@
 #define TIMERMAINWINDOW_H
 #include <QMainWindow>
 #include <QtCore>
+#include <QMediaPlayer>
 
 namespace Ui {
         class TimerMainWindow;
@@ -25,7 +26,9 @@ public:
 protected:
     void enableButtons(const bool isRunning);
 private slots:
-    void setLabelTime();
+    void showPlayerError(QMediaPlayer::Error err);
+    void setLabelTime(const int mSecs);
+    void updatetLabelTime();
     void tick();
     void on_actionStart_triggered();
     void on_actionStop_triggered();
@@ -38,12 +41,17 @@ private slots:
     void on_buttonPause_clicked();
 
 protected:
+    qreal getmSecsByBoxs() const;
     qreal getSecsByBoxs() const;
+    void setAudioFile(const QString& file);
+    void play();
 private:
     Ui::TimerMainWindow *ui;
     QTime time;
-    QString soundWay    = QLatin1Literal("left.wav");
-    QTimer* mainTimer   = {new QTimer(this)};
+    int pause_left_msecs = 0;
+    const QString soundWay = QLatin1Literal("audio.wav");
+    QMediaPlayer player;
+    QTimer* taskTimer   = {new QTimer(this)};
     QTimer* updateTimer = {new QTimer(this)};
     const QLatin1Literal settingSoundWay    = QLatin1Literal("SoundWay");
     const QLatin1Literal settingTextWay     = QLatin1Literal("TextWay");
