@@ -13,6 +13,14 @@
 
 int main(int argc, char *argv[])
     {
+    //set global names
+    QApplication::setOrganizationName   (QLatin1Literal("Advance"));
+    QApplication::setApplicationName    (QLatin1Literal("Converter"));
+    QApplication::setApplicationVersion (QLatin1Literal("0.1"));
+    QApplication::setOrganizationDomain (QLatin1Literal("http://www.advance-club.ru/"));
+    qDebug() << QApplication::applicationName() + QLatin1Literal(" starts.");
+
+
     QApplication::addLibraryPath(QLatin1Literal("plugins"));
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/icon.ico"));
