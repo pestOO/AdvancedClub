@@ -13,9 +13,14 @@ TRANSLATIONS = Timer_ru.ts
 RC_FILE   += res/advance_icon.rc
 
 SOURCES += main.cpp\
-        TimerMainWindow.cpp
-HEADERS  += TimerMainWindow.h
-FORMS    += TimerMainWindow.ui
+        TimerMainWindow.cpp \
+    SelectAudioFile.cpp \
+    AudioFilesListModel.cpp
+HEADERS  += TimerMainWindow.h \
+    SelectAudioFile.h \
+    AudioFilesListModel.h
+FORMS    += TimerMainWindow.ui \
+    SelectAudioFile.ui
 
 RESOURCES += \
     sounds.qrc

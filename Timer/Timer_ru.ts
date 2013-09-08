@@ -15,6 +15,34 @@
     </message>
 </context>
 <context>
+    <name>SelectAudioFile</name>
+    <message>
+        <location filename="SelectAudioFile.ui" line="9"/>
+        <source>Select audio file</source>
+        <translation>Выбор аудио файла</translation>
+    </message>
+    <message>
+        <location filename="SelectAudioFile.cpp" line="22"/>
+        <source>Cansel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="SelectAudioFile.cpp" line="23"/>
+        <source>Select</source>
+        <translation>Выбор</translation>
+    </message>
+    <message>
+        <location filename="SelectAudioFile.cpp" line="25"/>
+        <source>Select other</source>
+        <translation>Добавить</translation>
+    </message>
+    <message>
+        <location filename="SelectAudioFile.cpp" line="50"/>
+        <source>Sound Files (%1)</source>
+        <translation>Звуковой файл (%1)</translation>
+    </message>
+</context>
+<context>
     <name>TimerMainWindow</name>
     <message>
         <location filename="TimerMainWindow.ui" line="18"/>
@@ -103,33 +131,23 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="165"/>
-        <source>Open audio file</source>
-        <translation>Открытие аудио файла</translation>
-    </message>
-    <message>
-        <location filename="TimerMainWindow.cpp" line="167"/>
-        <source>Sound Files (%1)</source>
-        <translation>Звуковой файл (%1)</translation>
-    </message>
-    <message>
-        <location filename="TimerMainWindow.cpp" line="178"/>
+        <location filename="TimerMainWindow.cpp" line="172"/>
         <source>Open text file</source>
         <translation>Открытие текстового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="180"/>
+        <location filename="TimerMainWindow.cpp" line="174"/>
         <source>Text Files (%1)</source>
         <translation>Текстовый файл (%1)</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="231"/>
+        <location filename="TimerMainWindow.cpp" line="225"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
         <location filename="TimerMainWindow.ui" line="176"/>
-        <location filename="TimerMainWindow.cpp" line="236"/>
+        <location filename="TimerMainWindow.cpp" line="230"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>

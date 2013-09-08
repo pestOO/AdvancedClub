@@ -53,13 +53,12 @@ private:
     QMediaPlayer player;
     QTimer* taskTimer   = {new QTimer(this)};
     QTimer* updateTimer = {new QTimer(this)};
-    const QLatin1Literal settingSoundWay    = QLatin1Literal("SoundWay");
     const QLatin1Literal settingTextWay     = QLatin1Literal("TextWay");
     const QLatin1Literal settingConstSecs   = QLatin1Literal("ConstSecs");
     const QLatin1Literal settingLetterSecs  = QLatin1Literal("LetterSecs");
     const QLatin1Literal settingWordFont    = QLatin1Literal("WordFont");
     QFile textFile;
     QTextStream fileTextStream;
-    QSettings settings{QLatin1Literal("Advance"), QLatin1Literal("Timer")};
+    QSettings settings;
 };
 #endif // TIMERMAINWINDOW_H

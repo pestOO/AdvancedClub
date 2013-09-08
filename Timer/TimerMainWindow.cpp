@@ -9,10 +9,11 @@
 ****************************************************************************/
 #include "TimerMainWindow.h"
 #include "ui_TimerMainWindow.h"
-#include <QMessageBox>
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QFontDialog>
 #include <QHBoxLayout>
+#include "SelectAudioFile.h"
 
 TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::TimerMainWindow),
     fileTextStream(&textFile)
@@ -160,15 +161,9 @@ void TimerMainWindow::on_actionExit_triggered()
     }
 void TimerMainWindow::on_actionSelect_audio_triggered()
     {
-    const QString newSoundWay =
-            QFileDialog::getOpenFileName(this, tr("Open audio file"),
-                                         settings.value (settingSoundWay).toString (),
-                                         tr("Sound Files (%1)").arg (QLatin1Literal("*.wav *.mp3")));
+    const QString newSoundWay = SelectAudioFile::getAudioFile ();
     if(!newSoundWay.isEmpty())
-        {
-        settings.setValue (settingSoundWay, newSoundWay);
         setAudioFile(newSoundWay);
-        }
     }
 
 void TimerMainWindow::on_actionChoode_text_file_triggered()
@@ -193,6 +188,7 @@ void TimerMainWindow::on_actionClear_text_file_triggered()
     {
     textFile.close();
     textFile.setFileName(QLatin1Literal(""));
+    ui->labelWord->setText(QLatin1Literal(""));
     ui->checkBoxSoundForWord->setEnabled(false);
     ui->boxLetterSeconds->setEnabled(false);
     }
