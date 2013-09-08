@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>TimerMainWindow</class>
  <widget class="QMainWindow" name="TimerMainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>690</width>
-    <height>343</height>
-   </rect>
-  </property>
   <property name="minimumSize">
    <size>
     <width>400</width>
@@ -52,7 +44,7 @@
            <double>0.500000000000000</double>
           </property>
           <property name="maximum">
-           <double>10.000000000000000</double>
+           <double>300.000000000000000</double>
           </property>
           <property name="singleStep">
            <double>0.100000000000000</double>
@@ -181,7 +173,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Pause / Stop</string>
+         <string>Pause</string>
         </property>
        </widget>
       </item>
@@ -194,7 +186,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>690</width>
+     <width>427</width>
      <height>21</height>
     </rect>
    </property>
