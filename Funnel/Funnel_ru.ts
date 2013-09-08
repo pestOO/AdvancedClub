@@ -4,12 +4,12 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="MainWindow.cpp" line="20"/>
+        <location filename="MainWindow.cpp" line="22"/>
         <source>About</source>
         <translation>О приложении</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="27"/>
+        <location filename="MainWindow.cpp" line="29"/>
         <source>Made by %1 for training club %2.</source>
         <translation>Выполнено %1 по заказу тренингового клуба %2.</translation>
     </message>
@@ -17,7 +17,7 @@
 <context>
     <name>FileExtentions</name>
     <message>
-        <location filename="MainWindow.cpp" line="50"/>
+        <location filename="MainWindow.cpp" line="52"/>
         <source>Test files (%1)</source>
         <oldsource> test files (%1) </oldsource>
         <translation>Файл тестов (%1)</translation>
@@ -33,7 +33,7 @@
     <message>
         <location filename="MainWindow.ui" line="40"/>
         <source>Answer</source>
-        <translation>Ответ</translation>
+        <translation>Я знаю ответ</translation>
     </message>
     <message>
         <location filename="MainWindow.ui" line="50"/>
@@ -61,22 +61,22 @@
         <translation>Открыть тест</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="34"/>
+        <location filename="MainWindow.cpp" line="36"/>
         <source>Open test file.</source>
         <translation>Откройте файл теста.</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="49"/>
+        <location filename="MainWindow.cpp" line="51"/>
         <source>Select test</source>
         <translation>Выберите тест</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="99"/>
+        <location filename="MainWindow.cpp" line="101"/>
         <source>You have no mistakes!</source>
         <translation>Вы не сделали ни одной ошибки!</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="104"/>
+        <location filename="MainWindow.cpp" line="106"/>
         <source>You result is %1 mistakes from %2.
 Next round?</source>
         <translation>Ваш результат : %1 ошибок из %2.
@@ -86,12 +86,12 @@ Next round?</source>
 <context>
     <name>TestFunnel</name>
     <message>
-        <location filename="TestFunnel.cpp" line="22"/>
+        <location filename="TestFunnel.cpp" line="24"/>
         <source>Wrong file format</source>
         <translation>Неверный формат файла</translation>
     </message>
     <message>
-        <location filename="TestFunnel.cpp" line="60"/>
+        <location filename="TestFunnel.cpp" line="62"/>
         <source>No tasks</source>
         <translation>Задания закончились</translation>
     </message>
