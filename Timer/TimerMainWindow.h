@@ -49,7 +49,7 @@ private:
     Ui::TimerMainWindow *ui;
     QTime time;
     int pause_left_msecs = 0;
-    const QString soundWay = QLatin1Literal("audio.wav");
+    const QString soundWay = QLatin1Literal("audio.mp3");
     QMediaPlayer player;
     QTimer* taskTimer   = {new QTimer(this)};
     QTimer* updateTimer = {new QTimer(this)};
