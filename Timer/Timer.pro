@@ -9,7 +9,7 @@ QT      += core gui widgets multimedia
 CONFIG  += exceptions c++11
 TEMPLATE = app
 
-TRANSLATIONS = Time_ru.ts
+TRANSLATIONS = Timer_ru.ts
 RC_FILE   += res/advance_icon.rc
 
 SOURCES += main.cpp\
