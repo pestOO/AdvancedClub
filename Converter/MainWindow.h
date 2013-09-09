@@ -8,8 +8,8 @@
 ** Created 05.07.2013 by Zamakhov_EY.
 ****************************************************************************/
 #pragma once
-#ifndef PLAYERMAINWINDOW_H
-#define PLAYERMAINWINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 #include <QMainWindow>
 #include <QtCore>
 #include <QMessageBox>

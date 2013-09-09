@@ -22,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
     {
     ui->setupUi(this);
     setStatusBar(nullptr);
+    const int newWidth = qApp->desktop()->screenGeometry(this).width () / 3;
+    resize (newWidth, height());
+
     QAction * actionAbout = ui->menuBar->addAction (qApp->translate("About", "About"));
     connect (actionAbout, &QAction::triggered,
              [=]() {

@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
         qWarning() << "no qt_ru transaltion";
     app.installTranslator(&translator_qt_ru);
     QTranslator translator_own;
-    if(!translator_own.load("Player_ru", ":/"))
+    if(!translator_own.load("Converter_ru", ":/"))
         qWarning() << "no ru transaltion";
     app.installTranslator(&translator_own);
     MainWindow w;
