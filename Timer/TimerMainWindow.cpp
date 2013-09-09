@@ -74,6 +74,7 @@ void TimerMainWindow::enableButtons(const bool isRunning)
     ui->actionClear_text_file->setEnabled(!isRunning);
 
     ui->buttonPause->setEnabled (isRunning);
+    ui->buttonNext->setEnabled (isRunning);
 
     ui->actionStart->setVisible (!isRunning);
     ui->actionStop-> setVisible(isRunning);
@@ -116,12 +117,10 @@ void TimerMainWindow::tick()
         const QString linedText = text.split (regExp, QString::SkipEmptyParts).join(QChar::LineFeed);
         ui->labelWord->setText(linedText);
 
-        if(!fileTextStream.atEnd ())
+        if(ui->checkBoxSoundForWord->isChecked())
+            play();
+        if(fileTextStream.atEnd ())
             {
-            if(ui->checkBoxSoundForWord->isChecked())
-                play();
-            }
-        else {
             on_actionStop_triggered();
             ui->labelWord->setText(tr("That's all!"));
             return;
@@ -131,6 +130,12 @@ void TimerMainWindow::tick()
         play();
     taskTimer->start(getmSecsByBoxs());
     updatetLabelTime();
+    }
+void TimerMainWindow::checkPlayPauseButton()
+    {
+    //on pause - start
+    if(!taskTimer->isActive ())
+        on_buttonPause_clicked ();
     }
 void TimerMainWindow::on_actionStart_triggered()
     {
@@ -144,8 +149,7 @@ void TimerMainWindow::on_actionStart_triggered()
 void TimerMainWindow::on_actionStop_triggered()
     {
     //on pause - start
-    if(!taskTimer->isActive ())
-        on_buttonPause_clicked ();
+    checkPlayPauseButton ();
     taskTimer->stop();
     updateTimer->stop();
     textFile.close();
@@ -208,7 +212,6 @@ qreal TimerMainWindow::getSecsByBoxs() const
     return (ui->boxConstSeconds->value() +          /* constant secs */
             ui->boxLetterSeconds->value()*letters);  /* letter time */
     }
-
 void TimerMainWindow::setAudioFile(const QString & file)
     {
     player.setMedia(QUrl::fromLocalFile(file));
@@ -230,4 +233,12 @@ void TimerMainWindow::on_buttonPause_clicked()
         taskTimer->start (pause_left_msecs);
         ui->buttonPause->setText (tr("Pause"));
         }
+    }
+void TimerMainWindow::on_buttonNext_clicked()
+    {
+    checkPlayPauseButton ();
+    player.stop ();
+    taskTimer->stop();
+    updatetLabelTime ();
+    tick ();
     }

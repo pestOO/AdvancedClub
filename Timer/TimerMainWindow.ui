@@ -137,7 +137,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1,1">
       <item>
        <widget class="QCheckBox" name="checkBoxSoundForWord">
         <property name="enabled">
@@ -166,6 +166,16 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonNext">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="buttonPause">

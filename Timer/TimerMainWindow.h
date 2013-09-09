@@ -30,6 +30,7 @@ private slots:
     void setLabelTime(const int mSecs);
     void updatetLabelTime();
     void tick();
+    void checkPlayPauseButton();
     void on_actionStart_triggered();
     void on_actionStop_triggered();
     void on_actionExit_triggered();
@@ -39,7 +40,7 @@ private slots:
     void on_actionClear_text_file_triggered();
     void on_actionChange_text_font_triggered();
     void on_buttonPause_clicked();
-
+    void on_buttonNext_clicked();
 protected:
     qreal getmSecsByBoxs() const;
     qreal getSecsByBoxs() const;
