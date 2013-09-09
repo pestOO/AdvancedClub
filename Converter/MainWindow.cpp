@@ -360,6 +360,8 @@ void MainWindow::convertAudio(const QDir& inputeDir, const QStringList & files,
                 arguments << majorSilence;
             }
         }
+    //remove last silense
+    arguments.removeLast ();
     const constexpr auto ch = QLatin1Char('_');
     const QString outName = outBaseName + ch + t.toString (ch) + mp3;
     const QString outNameAbsolute = outputeDir.absoluteFilePath(outName);
