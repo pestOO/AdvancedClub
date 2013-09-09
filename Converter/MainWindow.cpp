@@ -66,7 +66,7 @@ void MainWindow::add_Text_to_Log(const QString & text, const bool err)
         QFile logFile("converter_errors.txt");
         logFile.open (QFile::Text | QFile::Append | QFile::WriteOnly);
         QTextStream logFileStream(&logFile);
-        logFileStream << text;
+        logFileStream << text << endl;
         QToolTip::showText (QCursor::pos(), text, this);
         }
     }
@@ -196,22 +196,17 @@ void MainWindow::sox(const QStringList & args) const
         soxProcess.setNativeArguments (args.first ());
         soxProcess.start ();
         }
-    soxProcess.waitForFinished ();
+    while(!soxProcess.waitForFinished (100))
+        qApp->processEvents ();
     {
     const QString soxOut = soxProcess.readAllStandardOutput();
     if(!soxOut.isEmpty ())
-        {
         logFileStream << soxOut;
-//        qDebug() << soxOut;
-        }
     }
     {
     const QString soxOutErr = soxProcess.readAllStandardError();
     if(!soxOutErr.isEmpty ())
-        {
         logFileStream << soxOutErr;
-//        qDebug() << soxOutErr;
-        }
     }
     }
 QString MainWindow::createSilentFile(const qreal duration) const
