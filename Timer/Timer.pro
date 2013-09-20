@@ -18,16 +18,19 @@ SOURCES += \
     AudioFilesListModel.cpp \
     WordRepeater.cpp \
     WordsListStatistic.cpp \
-    TimerMainWindow.cpp
+    TimerMainWindow.cpp \
+    DialogWordStatistics.cpp
 HEADERS  += \
     SelectAudioFile.h \
     AudioFilesListModel.h \
     WordRepeater.h \
     WordsListStatistic.h \
-    TimerMainWindow.h
+    TimerMainWindow.h \
+    DialogWordStatistics.h
 FORMS    += \
     SelectAudioFile.ui \
-    TimerMainWindow.ui
+    TimerMainWindow.ui \
+    DialogWordStatistics.ui
 
 RESOURCES += \
     sounds.qrc

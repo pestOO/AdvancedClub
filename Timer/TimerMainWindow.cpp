@@ -14,6 +14,7 @@
 #include <QFontDialog>
 #include <QHBoxLayout>
 #include "SelectAudioFile.h"
+#include "DialogWordStatistics.h"
 
 TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::TimerMainWindow)
     {
@@ -122,7 +123,7 @@ void TimerMainWindow::nextAction()
             {
             stopTimers(false);
             setLabelWord(tr("That's all!"));
-            //TODO:show statistics on words
+            showStatistics();
             return;
             }
         }
@@ -137,9 +138,14 @@ void TimerMainWindow::checkPlayPauseButton()
     }
 void TimerMainWindow::on_actionStart_triggered()
     {
-    qWarning() << "start";
     if(wordlist.hasNextRound ())
         wordlist.startNewRound ();
+    else
+        {
+        showStatistics();
+        return;
+        }
+    qWarning() << "start";
     nextAction();
     ui->progressBar->setMaximum(taskTimer->interval());
     updateTimer->start();
@@ -232,6 +238,12 @@ void TimerMainWindow::setLabelWord(const QString & word)
 void TimerMainWindow::clearLabelWord()
     {
     ui->labelWord->setText(QLatin1Literal(""));
+    }
+void TimerMainWindow::showStatistics()
+    {
+    DialogWordStatistics dialog;
+    dialog.setWordRepeater(wordlist);
+    dialog.exec ();
     }
 void TimerMainWindow::play()
     {

@@ -53,6 +53,7 @@ protected:
     void setAudioFile(const QString& file);
     void setLabelWord(const QString& word);
     void clearLabelWord();
+    void showStatistics();
     void play();
 private:
     Ui::TimerMainWindow *ui;
