@@ -15,8 +15,7 @@
 #include <QHBoxLayout>
 #include "SelectAudioFile.h"
 
-TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::TimerMainWindow),
-    fileTextStream(&textFile)
+TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::TimerMainWindow)
     {
     ui->setupUi(this);
     setStatusBar(nullptr);
@@ -43,7 +42,7 @@ TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new 
     const QFont wordFont = ui->labelWord->font();
     ui->labelWord->setFont(settings.value(settingWordFont, wordFont).value<QFont>());
 
-    ui->labelWord->setText(QLatin1Literal(""));
+    clearLabelWord ();
     updatetLabelTime();
     enableButtons(false);
     adjustSize();
@@ -104,30 +103,29 @@ void TimerMainWindow::updatetLabelTime()
     }
 void TimerMainWindow::tick()
     {
-    if(textFile.exists())
+    wordlist.setErrorState (false);
+    nextAction();
+    }
+void TimerMainWindow::nextAction()
+    {
+    if(wordlist.isEmpty())
+        play();
+    else
         {
-        QString text;
-        while(!fileTextStream.atEnd ())
+        if(wordlist.hasNext ())
             {
-            text = fileTextStream.readLine().trimmed();
-            if(!text.isEmpty ())
-                break;
+            setLabelWord(wordlist.word ());
+            if(ui->checkBoxSoundForWord->isChecked())
+                play();
             }
-        static QRegExp regExp("[\\r\\t]");
-        const QString linedText = text.split (regExp, QString::SkipEmptyParts).join(QChar::LineFeed);
-        ui->labelWord->setText(linedText);
-
-        if(ui->checkBoxSoundForWord->isChecked())
-            play();
-        if(fileTextStream.atEnd ())
+        else
             {
-            on_actionStop_triggered();
-            ui->labelWord->setText(tr("That's all!"));
+            stopTimers(false);
+            setLabelWord(tr("That's all!"));
+            //TODO:show statistics on words
             return;
             }
         }
-    else
-        play();
     taskTimer->start(getmSecsByBoxs());
     updatetLabelTime();
     }
@@ -140,23 +138,29 @@ void TimerMainWindow::checkPlayPauseButton()
 void TimerMainWindow::on_actionStart_triggered()
     {
     qWarning() << "start";
-    textFile.open(QFile::ReadOnly);
-    tick();
+    if(wordlist.hasNextRound ())
+        wordlist.startNewRound ();
+    nextAction();
     ui->progressBar->setMaximum(taskTimer->interval());
     updateTimer->start();
     enableButtons(true);
     }
 void TimerMainWindow::on_actionStop_triggered()
     {
+    stopTimers(true);
+    }
+void TimerMainWindow::stopTimers(const bool reset)
+    {
     //on pause - start
     checkPlayPauseButton ();
     taskTimer->stop();
     updateTimer->stop();
-    textFile.close();
     player.stop ();
     enableButtons(false);
     updatetLabelTime ();
     setLabelTime(getmSecsByBoxs());
+    if(reset)
+        wordlist.resetRound ();
     qWarning() << "stop";
     }
 void TimerMainWindow::on_actionExit_triggered()
@@ -178,10 +182,13 @@ void TimerMainWindow::on_actionChoode_text_file_triggered()
                                          tr("Text Files (%1)").arg (QLatin1Literal("*.txt")));
     if(!newTextWay.isEmpty())
         {
-        settings.setValue (settingTextWay, newTextWay);
-        textFile.setFileName(newTextWay);
-        ui->checkBoxSoundForWord->setEnabled(true);
-        ui->boxLetterSeconds->setEnabled(true);
+        wordlist.load (newTextWay);
+        if(!wordlist.isEmpty ())
+            {
+            settings.setValue (settingTextWay, newTextWay);
+            ui->checkBoxSoundForWord->setEnabled(true);
+            ui->boxLetterSeconds->setEnabled(true);
+            }
         }
     }
 void TimerMainWindow::on_actionClear_sound_triggered()
@@ -190,9 +197,8 @@ void TimerMainWindow::on_actionClear_sound_triggered()
     }
 void TimerMainWindow::on_actionClear_text_file_triggered()
     {
-    textFile.close();
-    textFile.setFileName(QLatin1Literal(""));
-    ui->labelWord->setText(QLatin1Literal(""));
+    wordlist.clear ();
+    clearLabelWord ();
     ui->checkBoxSoundForWord->setEnabled(false);
     ui->boxLetterSeconds->setEnabled(false);
     }
@@ -210,11 +216,22 @@ qreal TimerMainWindow::getSecsByBoxs() const
     {
     const int letters = ui->labelWord->text().length();
     return (ui->boxConstSeconds->value() +          /* constant secs */
-            ui->boxLetterSeconds->value()*letters);  /* letter time */
+            ui->boxLetterSeconds->value()*letters); /* letter time */
     }
 void TimerMainWindow::setAudioFile(const QString & file)
     {
     player.setMedia(QUrl::fromLocalFile(file));
+    }
+
+void TimerMainWindow::setLabelWord(const QString & word)
+    {
+    static QRegExp regExp("[\\r\\t]");
+    const QString linedText = word.split (regExp, QString::SkipEmptyParts).join(QChar::LineFeed);
+    ui->labelWord->setText(linedText);
+    }
+void TimerMainWindow::clearLabelWord()
+    {
+    ui->labelWord->setText(QLatin1Literal(""));
     }
 void TimerMainWindow::play()
     {
@@ -237,8 +254,9 @@ void TimerMainWindow::on_buttonPause_clicked()
 void TimerMainWindow::on_buttonNext_clicked()
     {
     checkPlayPauseButton ();
+    wordlist.setErrorState (true);
     player.stop ();
     taskTimer->stop();
     updatetLabelTime ();
-    tick ();
+    nextAction();
     }

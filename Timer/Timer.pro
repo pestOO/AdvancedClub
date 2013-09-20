@@ -12,15 +12,22 @@ TEMPLATE = app
 TRANSLATIONS = Timer_ru.ts
 RC_FILE   += res/advance_icon.rc
 
-SOURCES += main.cpp\
-        TimerMainWindow.cpp \
+SOURCES += \
+    main.cpp \
     SelectAudioFile.cpp \
-    AudioFilesListModel.cpp
-HEADERS  += TimerMainWindow.h \
+    AudioFilesListModel.cpp \
+    WordRepeater.cpp \
+    WordsListStatistic.cpp \
+    TimerMainWindow.cpp
+HEADERS  += \
     SelectAudioFile.h \
-    AudioFilesListModel.h
-FORMS    += TimerMainWindow.ui \
-    SelectAudioFile.ui
+    AudioFilesListModel.h \
+    WordRepeater.h \
+    WordsListStatistic.h \
+    TimerMainWindow.h
+FORMS    += \
+    SelectAudioFile.ui \
+    TimerMainWindow.ui
 
 RESOURCES += \
     sounds.qrc

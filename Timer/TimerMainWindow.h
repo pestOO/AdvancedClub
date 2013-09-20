@@ -13,6 +13,7 @@
 #include <QMainWindow>
 #include <QtCore>
 #include <QMediaPlayer>
+#include "WordRepeater.h"
 
 namespace Ui {
         class TimerMainWindow;
@@ -28,11 +29,16 @@ protected:
 private slots:
     void showPlayerError(QMediaPlayer::Error err);
     void setLabelTime(const int mSecs);
+    //update GUI data by micro-timer
     void updatetLabelTime();
+    //timer is off - mark word as error and go next
     void tick();
+    //make the next action (show word, play sound)
+    void nextAction();
     void checkPlayPauseButton();
     void on_actionStart_triggered();
     void on_actionStop_triggered();
+    void stopTimers(const bool reset);
     void on_actionExit_triggered();
     void on_actionSelect_audio_triggered();
     void on_actionChoode_text_file_triggered();
@@ -45,6 +51,8 @@ protected:
     qreal getmSecsByBoxs() const;
     qreal getSecsByBoxs() const;
     void setAudioFile(const QString& file);
+    void setLabelWord(const QString& word);
+    void clearLabelWord();
     void play();
 private:
     Ui::TimerMainWindow *ui;
@@ -58,8 +66,7 @@ private:
     const QLatin1Literal settingConstSecs   = QLatin1Literal("ConstSecs");
     const QLatin1Literal settingLetterSecs  = QLatin1Literal("LetterSecs");
     const QLatin1Literal settingWordFont    = QLatin1Literal("WordFont");
-    QFile textFile;
-    QTextStream fileTextStream;
     QSettings settings;
+    WordRepeater wordlist;
 };
 #endif // TIMERMAINWINDOW_H
