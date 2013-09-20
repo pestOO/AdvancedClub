@@ -1,0 +1,10 @@
+/****************************************************************************
+**
+** Copyright(c) 2013 Advance Club
+** All rights reserved.
+** Authors contacts:
+**      Elisey Zamakhov (EliseyZamahov@gmail.com)
+**
+** Created %DATE% by Elisey Zamakhov.
+****************************************************************************/
+#pragma once
