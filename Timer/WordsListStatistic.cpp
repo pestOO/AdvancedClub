@@ -52,6 +52,7 @@ bool WordsListStatistic::hasNextRound() const
     }
 WordsListStatistic::StringList WordsListStatistic::getWordsError() const
     {
+    Q_ASSERT(words.isEmpty());
     Q_ASSERT(!wordsError.isEmpty());
     return wordsError;
     }
