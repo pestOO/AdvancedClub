@@ -29,9 +29,15 @@ void WordRepeater::load(const QString & filename)
     }
 int WordRepeater::countWords() const
     {
-    if(wordListsStatistics.isEmpty ())
-        return originalWordList.countWords ();
-    return wordListsStatistics.last ().countWords ();
+    return currentList ().countWords ();
+    }
+int WordRepeater::countErrors() const
+    {
+    return currentList ().countWords ();
+    }
+int WordRepeater::countCorrects() const
+    {
+    return currentList ().countWords ();
     }
 bool WordRepeater::hasNext()
     {
@@ -59,9 +65,7 @@ bool WordRepeater::isEmpty() const
     }
 bool WordRepeater::hasNextRound() const
     {
-    if(wordListsStatistics.isEmpty ())
-        return originalWordList.hasNextRound ();
-    return wordListsStatistics.last ().hasNextRound ();
+    return currentList().hasNextRound ();
     }
 void WordRepeater::startNewRound()
     {
@@ -81,4 +85,16 @@ void WordRepeater::resetRound()
 void WordRepeater::clear()
     {
     wordListsStatistics.clear ();
+    }
+WordsListStatistic &WordRepeater::currentList()
+    {
+    if(wordListsStatistics.isEmpty ())
+        return originalWordList;
+    return wordListsStatistics.last ();
+    }
+const WordsListStatistic &WordRepeater::currentList() const
+    {
+    if(wordListsStatistics.isEmpty ())
+        return originalWordList;
+    return wordListsStatistics.last ();
     }

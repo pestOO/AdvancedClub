@@ -22,6 +22,8 @@ public:
     void addWord(const QString & word);
     //count of all words (correct, uncorrect, unmarked)
     int countWords() const;
+    int countErrors() const;
+    int countCorrects() const;
     //has one more unmarked word
     bool hasNext();
     //return current unmared word

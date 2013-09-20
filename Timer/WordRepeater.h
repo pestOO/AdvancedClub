@@ -22,6 +22,8 @@ public:
     //count of all words (correct, uncorrect, unmarked)
     //on current step
     int countWords() const;
+    int countErrors() const;
+    int countCorrects() const;
     //has one more unmarked word
     bool hasNext();
     //return current unmared word
@@ -39,10 +41,11 @@ public:
 
     //clear all data;
     void clear();
-    //resert to orogonal state
 private:
     Q_DISABLE_COPY(WordRepeater)
     WordsListStatistic originalWordList;
     QList<WordsListStatistic> wordListsStatistics;
+    WordsListStatistic& currentList();
+    const WordsListStatistic& currentList() const;
 };
 #endif // WORDREPEATER_H

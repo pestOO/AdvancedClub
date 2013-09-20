@@ -23,6 +23,14 @@ int WordsListStatistic::countWords() const
     {
     return words.count () + wordsCorrect.count () + wordsError.count ();
     }
+int WordsListStatistic::countErrors() const
+    {
+    return wordsError.count ();
+    }
+int WordsListStatistic::countCorrects() const
+    {
+    return wordsCorrect.count ();
+    }
 bool WordsListStatistic::hasNext()
     {
     return !words.isEmpty ();
