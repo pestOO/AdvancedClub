@@ -36,15 +36,15 @@ QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
                 case 0:
                     {
                     const int err = roundInfo.countErrors ();
-                    return  QString("%1 (%2%)").arg (err).arg (qreal(err)*100/all, 4, 'f', 1);
+                    return  QString(" %1 (%2%) ").arg (err).arg (qreal(err)*100/all, 5, 'f', 1);
                     }
                 case 1:
                     {
                     const int corr = roundInfo.countCorrects ();
-                    return  QString("%1 (%2%)").arg (corr).arg (qreal(corr)*100/all, 4, 'f', 1);
+                    return  QString(" %1 (%2%) ").arg (corr).arg (qreal(corr)*100/all, 5, 'f', 1);
                     }
                 case 2:
-                    return  QString("%1").arg (all);
+                    return  QString(" %1 ").arg (all);
                 default:
                     Q_UNIMPLEMENTED();
                     break;

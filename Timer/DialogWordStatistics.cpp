@@ -46,7 +46,7 @@ DialogWordStatistics::DialogWordStatistics(const WordRepeater& wordList, QWidget
     ui->tableView->clearSelection ();
 
     QFont appFont = qApp->font();
-    appFont.setFamily ("Monospace");
+    appFont.setFamily ("Lucida Console");
     ui->tableView->setFont (appFont);
 
     prepareDialog (this);
