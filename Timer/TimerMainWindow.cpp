@@ -184,10 +184,6 @@ void TimerMainWindow::stopTimers(const bool reset)
         //clear current rounf data on stop
         if(reset)
             wordlist.resetRound ();
-        else
-            //Check new round
-            if(!wordlist.hasNextRound ())
-                showStatistics ();
         }
     qWarning() << "stop";
     }
