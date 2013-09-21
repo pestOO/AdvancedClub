@@ -10,6 +10,7 @@
 #include "DialogWordStatistics.h"
 #include "ui_DialogWordStatistics.h"
 #include "StatisticsTableModel.h"
+#include <QAbstractButton>
 
 DialogWordStatistics::DialogWordStatistics(const WordRepeater& wordList, QWidget *parent) :
     QDialog(parent),
@@ -18,6 +19,12 @@ DialogWordStatistics::DialogWordStatistics(const WordRepeater& wordList, QWidget
     ui->setupUi(this);
     ui->buttonBox->addButton (tr("Ok"), QDialogButtonBox::RejectRole);
     ui->tableView->setModel( new StatisticsTableModel(wordList));
+
+    QAbstractButton* cornerButton = ui->tableView->findChild<QAbstractButton*>();
+    Q_ASSERT(cornerButton);
+    cornerButton->setEnabled(false);
+    cornerButton->setText(tr(" Round "));
+    cornerButton->installEventFilter(this);
     }
 DialogWordStatistics::~DialogWordStatistics()
     {
