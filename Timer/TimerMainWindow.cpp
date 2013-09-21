@@ -178,11 +178,16 @@ void TimerMainWindow::stopTimers(const bool reset)
     enableButtons(false);
     updatetLabelTime ();
     setLabelTime(getmSecsByBoxs());
-    if(reset)
-        wordlist.resetRound ();
-    else
-        if(!wordlist.hasNextRound ())
-            ui->actionStart->setEnabled (false);
+    if(isTextMode())
+        {
+        //clear current rounf data on stop
+        if(reset)
+            wordlist.resetRound ();
+        else
+            //Check new round
+            if(!wordlist.hasNextRound ())
+                ui->actionStart->setEnabled (false);
+        }
     qWarning() << "stop";
     }
 void TimerMainWindow::on_actionExit_triggered()
@@ -283,7 +288,8 @@ void TimerMainWindow::on_buttonPause_clicked()
 void TimerMainWindow::on_buttonNext_clicked()
     {
     checkPlayPauseButton ();
-    wordlist.setErrorState (true);
+    if(isTextMode ())
+        wordlist.setErrorState (true);
     player.stop ();
     taskTimer->stop();
     updatetLabelTime ();
