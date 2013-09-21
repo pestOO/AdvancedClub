@@ -269,6 +269,7 @@ void TimerMainWindow::showStatistics()
     }
 void TimerMainWindow::play()
     {
+    player.stop ();
     player.play ();
     }
 void TimerMainWindow::on_buttonPause_clicked()
