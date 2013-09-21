@@ -163,6 +163,7 @@ void TimerMainWindow::on_actionStart_triggered()
     ui->progressBar->setMaximum(taskTimer->interval());
     updateTimer->start();
     enableButtons(true);
+    ui->buttonNext->setFocus ();
     }
 void TimerMainWindow::on_actionStop_triggered()
     {
