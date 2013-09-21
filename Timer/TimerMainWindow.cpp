@@ -187,7 +187,7 @@ void TimerMainWindow::stopTimers(const bool reset)
         else
             //Check new round
             if(!wordlist.hasNextRound ())
-                ui->actionStart->setEnabled (false);
+                showStatistics ();
         }
     qWarning() << "stop";
     }
@@ -211,7 +211,6 @@ void TimerMainWindow::on_actionChoode_text_file_triggered()
     if(!newTextWay.isEmpty())
         {
         wordlist.load (newTextWay);
-        ui->actionStart->setEnabled (true);
         if(!wordlist.isEmpty ())
             {
             settings.setValue (settingTextWay, newTextWay);
@@ -227,7 +226,6 @@ void TimerMainWindow::on_actionClear_sound_triggered()
 void TimerMainWindow::on_actionClear_text_file_triggered()
     {
     wordlist.clear ();
-    ui->actionStart->setEnabled (true);
     clearLabelWord ();
     ui->checkBoxSoundForWord->setEnabled(false);
     ui->boxLetterSeconds->setEnabled(false);
