@@ -184,6 +184,13 @@ void TimerMainWindow::stopTimers(const bool reset)
         //clear current rounf data on stop
         if(reset)
             wordlist.resetRound ();
+        else
+            //add time for next round
+            if(wordlist.hasNextRound ())\
+                {
+                ui->boxConstSeconds->setValue (ui->boxConstSeconds->value () * 1.5);
+                ui->boxLetterSeconds->setValue(ui->boxLetterSeconds->value() * 1.5);
+                }
         }
     qWarning() << "stop";
     }
