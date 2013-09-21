@@ -9,18 +9,17 @@
 ****************************************************************************/
 #include "DialogWordStatistics.h"
 #include "ui_DialogWordStatistics.h"
+#include "StatisticsTableModel.h"
 
-DialogWordStatistics::DialogWordStatistics(QWidget *parent) :
+DialogWordStatistics::DialogWordStatistics(const WordRepeater& wordList, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DialogWordStatistics)
     {
     ui->setupUi(this);
     ui->buttonBox->addButton (tr("Ok"), QDialogButtonBox::RejectRole);
+    ui->tableView->setModel( new StatisticsTableModel(wordList));
     }
 DialogWordStatistics::~DialogWordStatistics()
     {
     delete ui;
-    }
-void DialogWordStatistics::setWordRepeater(const WordRepeater & wordList)
-    {
     }

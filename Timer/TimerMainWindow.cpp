@@ -241,8 +241,7 @@ void TimerMainWindow::clearLabelWord()
     }
 void TimerMainWindow::showStatistics()
     {
-    DialogWordStatistics dialog;
-    dialog.setWordRepeater(wordlist);
+    DialogWordStatistics dialog(wordlist, this);
     dialog.exec ();
     }
 void TimerMainWindow::play()

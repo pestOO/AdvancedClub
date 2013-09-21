@@ -39,6 +39,10 @@ public:
     void startNewRound();
     void resetRound();
 
+    //statistics getters
+    int roundCounts() const;
+    const WordsListStatistic& getRound(int i) const;
+
     //clear all data;
     void clear();
 private:

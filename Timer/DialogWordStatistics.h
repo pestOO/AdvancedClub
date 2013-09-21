@@ -19,9 +19,8 @@ class DialogWordStatistics : public QDialog
 {
     Q_OBJECT
 public:
-    explicit DialogWordStatistics(QWidget *parent = 0);
+    explicit DialogWordStatistics(const WordRepeater& wordList, QWidget *parent = 0);
     ~DialogWordStatistics();
-    void setWordRepeater(const WordRepeater& wordList);
 private:
     Ui::DialogWordStatistics *ui;
 };
