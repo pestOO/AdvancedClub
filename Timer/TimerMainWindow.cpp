@@ -138,12 +138,15 @@ void TimerMainWindow::checkPlayPauseButton()
     }
 void TimerMainWindow::on_actionStart_triggered()
     {
-    if(wordlist.hasNextRound ())
-        wordlist.startNewRound ();
-    else
+    if(!wordlist.isEmpty())
         {
-        showStatistics();
-        return;
+        if(wordlist.hasNextRound ())
+            wordlist.startNewRound ();
+        else
+            {
+            showStatistics();
+            return;
+            }
         }
     qWarning() << "start";
     nextAction();
@@ -208,7 +211,7 @@ void TimerMainWindow::on_actionClear_sound_triggered()
 void TimerMainWindow::on_actionClear_text_file_triggered()
     {
     wordlist.clear ();
-    ui->actionStart->setEnabled (false);
+    ui->actionStart->setEnabled (true);
     clearLabelWord ();
     ui->checkBoxSoundForWord->setEnabled(false);
     ui->boxLetterSeconds->setEnabled(false);
