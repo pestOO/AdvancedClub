@@ -19,7 +19,7 @@ int StatisticsTableModel::rowCount(const QModelIndex &) const
     }
 int StatisticsTableModel::columnCount(const QModelIndex &) const
     {
-    return 2;
+    return 3;
     }
 QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
     {
@@ -31,21 +31,20 @@ QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
         if(role == Qt::DisplayRole)
             {
             const WordsListStatistic &roundInfo = wordStatistics.getRound (index.row ());
+            const int all = roundInfo.countWords ();
             switch (index.column ()) {
                 case 0:
                     {
                     const int err = roundInfo.countErrors ();
-                    const int all = roundInfo.countWords ();
-                    return  QString("%1 (%2%)").arg (err).arg (qreal(err)/all, 4, 'f', 1);
+                    return  QString("%1 (%2%)").arg (err).arg (qreal(err)*100/all, 4, 'f', 1);
                     }
                 case 1:
                     {
                     const int corr = roundInfo.countCorrects ();
-                    const int all = roundInfo.countWords ();
-                    return  QString("%1 (%2%)").arg (corr).arg (qreal(corr)/all, 4, 'f', 1);
+                    return  QString("%1 (%2%)").arg (corr).arg (qreal(corr)*100/all, 4, 'f', 1);
                     }
                 case 2:
-                    return  QString("%1").arg (roundInfo.countWords ());
+                    return  QString("%1").arg (all);
                 default:
                     Q_UNIMPLEMENTED();
                     break;
