@@ -79,6 +79,14 @@ void TimerMainWindow::enableButtons(const bool isRunning)
     ui->actionStart->setVisible (!isRunning);
     ui->actionStop-> setVisible(isRunning);
     }
+bool TimerMainWindow::isTextMode() const
+    {
+    return !wordlist.isEmpty();
+    }
+bool TimerMainWindow::isSoundMode() const
+    {
+    return wordlist.isEmpty();
+    }
 void TimerMainWindow::showPlayerError(QMediaPlayer::Error err)
     {
     qWarning() << err << player.errorString();
@@ -104,13 +112,15 @@ void TimerMainWindow::updatetLabelTime()
     }
 void TimerMainWindow::tick()
     {
-    wordlist.setErrorState (false);
+    if(isTextMode ())
+        wordlist.setErrorState (false);
     nextAction();
     }
 void TimerMainWindow::nextAction()
     {
-    if(wordlist.isEmpty())
+    if(isSoundMode ())
         play();
+    //text mode
     else
         {
         if(wordlist.hasNext ())
@@ -138,7 +148,7 @@ void TimerMainWindow::checkPlayPauseButton()
     }
 void TimerMainWindow::on_actionStart_triggered()
     {
-    if(!wordlist.isEmpty())
+    if(isTextMode())
         {
         if(wordlist.hasNextRound ())
             wordlist.startNewRound ();

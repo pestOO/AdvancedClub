@@ -26,6 +26,10 @@ public:
     ~TimerMainWindow();
 protected:
     void enableButtons(const bool isRunning);
+    //Text mode - loaded and prepared text file
+    bool isTextMode() const;
+    //Sound mode - for only sound play mode
+    bool isSoundMode() const;
 private slots:
     void showPlayerError(QMediaPlayer::Error err);
     void setLabelTime(const int mSecs);
