@@ -207,9 +207,21 @@ void TimerMainWindow::on_actionSelect_audio_triggered()
 
 void TimerMainWindow::on_actionChoode_text_file_triggered()
     {
+    const auto getOldWay = [&]()
+        {
+        const QString textWay =  settings.value (settingTextWay).toString ();
+        if(!QFile::exists(textWay))
+            {
+            const QString txtFolder = "TEXTFILES";
+            const QDir dir;
+            if(dir.exists (txtFolder))
+                return dir.absoluteFilePath (txtFolder);
+            }
+        return textWay;
+        };
+    const QString oldTextWay = getOldWay();
     const QString newTextWay =
-            QFileDialog::getOpenFileName(this, tr("Open text file"),
-                                         settings.value (settingTextWay).toString (),
+            QFileDialog::getOpenFileName(this, tr("Open text file"), oldTextWay,
                                          tr("Text Files (%1)").arg (QLatin1Literal("*.txt")));
     if(!newTextWay.isEmpty())
         {
