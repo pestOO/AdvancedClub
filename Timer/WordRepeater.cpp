@@ -80,13 +80,11 @@ void WordRepeater::startNewRound()
 void WordRepeater::resetRound()
     {
     wordListsStatistics.removeLast ();
-    startNewRound();
     }
 int WordRepeater::roundCounts() const
     {
     return wordListsStatistics.size ();
     }
-
 const WordsListStatistic &WordRepeater::getRound(int i) const
     {
     return wordListsStatistics.at (i);
