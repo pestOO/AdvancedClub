@@ -46,6 +46,7 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 [Files]
 Source: "..\Timer-build\release\{#TimerEXE}";   DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Timer-build\audio.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Timer-build\TEXTFILES\*.txt"; DestDir: "{app}\TEXTFILES"; Flags: ignoreversion
 Source: "..\Funnel-build\release\{#FunnelEXE}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "{#QtMinGWFolder}\bin\icu*.dll"; DestDir: "{app}"; Flags: ignoreversion
