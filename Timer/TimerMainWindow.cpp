@@ -107,8 +107,10 @@ void TimerMainWindow::updatetLabelTime()
         ui->progressBar->setMaximum(1);
         ui->progressBar->setValue(0);
         }
-    else
+    else{
+        ui->progressBar->setMaximum(taskTimer->interval());
         ui->progressBar->setValue(taskTimer->remainingTime());
+        }
     }
 void TimerMainWindow::tick()
     {
@@ -160,7 +162,6 @@ void TimerMainWindow::on_actionStart_triggered()
         }
     qWarning() << "start";
     nextAction();
-    ui->progressBar->setMaximum(taskTimer->interval());
     updateTimer->start();
     enableButtons(true);
     ui->buttonNext->setFocus ();
