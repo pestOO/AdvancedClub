@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName		"Утилиты Advance Club"
-#define MyAppVersion	"1.2013.09.20"
+#define MyAppVersion	"1.2013.09.22"
 #define MyAppPublisher	"Тренинговый клуб «Advance»"
 #define MyAppURL		"http://www.advance-club.ru/"
 #define MyName			"Zamahov Elisey"
@@ -45,7 +45,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Files]
 Source: "..\Timer-build\release\{#TimerEXE}";   DestDir: "{app}"; Flags: ignoreversion
-Source: "..\Timer-build\audio.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Timer-build\audio.mp3"; DestDir: "{app}"; Flags: ignoreversion 
+Source: "..\Timer\docs\*.doc";   DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Timer-build\TEXTFILES\*.txt"; DestDir: "{app}\TEXTFILES"; Flags: ignoreversion
 Source: "..\Funnel-build\release\{#FunnelEXE}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
