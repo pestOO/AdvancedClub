@@ -30,9 +30,9 @@ SelectAudioFile::~SelectAudioFile()
     {
     delete ui;
     }
-QString SelectAudioFile::getAudioFile()
+QString SelectAudioFile::getAudioFile(Widget * parent)
     {
-    SelectAudioFile dialog;
+    SelectAudioFile dialog(parent);
     dialog.exec ();
     return dialog.getSelectedAudioFile ();
     }

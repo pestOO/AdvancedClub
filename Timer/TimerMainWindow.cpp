@@ -200,7 +200,7 @@ void TimerMainWindow::on_actionExit_triggered()
     }
 void TimerMainWindow::on_actionSelect_audio_triggered()
     {
-    const QString newSoundWay = SelectAudioFile::getAudioFile ();
+    const QString newSoundWay = SelectAudioFile::getAudioFile (this);
     if(!newSoundWay.isEmpty())
         setAudioFile(newSoundWay);
     }
@@ -236,6 +236,7 @@ void TimerMainWindow::on_actionClear_text_file_triggered()
 void TimerMainWindow::on_actionChange_text_font_triggered()
     {
     QFontDialog dialog(ui->labelWord->font(), this);
+    dialog.setWindowTitle (tr("Select font"));
     if(dialog.exec() == QDialog::Accepted)
         ui->labelWord->setFont(dialog.selectedFont());
     }
