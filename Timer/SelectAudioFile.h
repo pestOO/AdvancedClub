@@ -21,7 +21,7 @@ class SelectAudioFile : public QDialog
     Q_OBJECT
     explicit SelectAudioFile(QWidget *parent = 0);
 public:
-    static QString getAudioFile (Widget *parent = 0);
+    static QString getAudioFile (QWidget *parent = 0);
     ~SelectAudioFile();
 protected:
     QString getSelectedAudioFile() const;

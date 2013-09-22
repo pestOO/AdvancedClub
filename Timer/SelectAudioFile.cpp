@@ -30,7 +30,7 @@ SelectAudioFile::~SelectAudioFile()
     {
     delete ui;
     }
-QString SelectAudioFile::getAudioFile(Widget * parent)
+QString SelectAudioFile::getAudioFile(QWidget * parent)
     {
     SelectAudioFile dialog(parent);
     dialog.exec ();
