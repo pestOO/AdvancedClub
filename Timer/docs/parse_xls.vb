@@ -1,5 +1,12 @@
 Option Explicit
 
+function count(find as string, lookin as range) As Long
+   dim cell As Range
+   for each cell in lookin
+       if (cell.Value = find) then count = count + 1 '//case sens
+   next
+end function
+
 Public Sub Columns_to_TextFile()
      
     Const My_Path = "C:\TEXTFILES\"
@@ -17,7 +24,7 @@ Public Sub Columns_to_TextFile()
     On Error GoTo 0
     File_Num = FreeFile()
     With ActiveSheet
-        For iCol = 1 To .Cells.Count
+        For iCol = 1 To COUNTA(A2:A2000)
             NewPath = My_Path & Trim(.Cells(1, iCol).Value) & ".txt"
             Open NewPath For Output As #File_Num
             For lRow = 2 To .Rows.Count
