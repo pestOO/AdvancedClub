@@ -156,7 +156,10 @@ void TimerMainWindow::on_actionStart_triggered()
     if(isTextMode())
         {
         if(wordlist.hasNextRound ())
-            wordlist.startNewRound ();
+            wordlist.startNewRound (
+                        //set new timer data
+                        qMakePair(ui->boxConstSeconds->value(),
+                                  ui->boxLetterSeconds->value()));
         else
             {
             showStatistics(false);

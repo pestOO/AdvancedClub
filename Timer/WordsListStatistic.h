@@ -37,9 +37,13 @@ public:
     bool hasNextRound() const;
     //return words for next round
     StringList getWordsError() const;
+
+    void setTiming(const QPair<qreal,qreal> time);
+    QPair<qreal,qreal> getTiming() const;
 private:
     StringList words;
     StringList wordsError;
     StringList wordsCorrect;
+    QPair<qreal,qreal> timing;
 };
 #endif // WORDSLISTSTATISTIC_H

@@ -19,7 +19,7 @@ int StatisticsTableModel::rowCount(const QModelIndex &) const
     }
 int StatisticsTableModel::columnCount(const QModelIndex &) const
     {
-    return 3;
+    return 4;
     }
 QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
     {
@@ -45,6 +45,13 @@ QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
                     }
                 case 2:
                     return  QString(" %1 ").arg (all);
+                case 3:
+                    {
+                    const QPair<qreal, qreal> time = roundInfo.getTiming ();
+                    return  QString(" %1 / %2 ")
+                            .arg (time.first , 4, 'f', 2)
+                            .arg (time.second, 4, 'f', 2);
+                    }
                 default:
                     Q_UNIMPLEMENTED();
                     break;
@@ -63,6 +70,8 @@ QVariant StatisticsTableModel::headerData(int section, Qt::Orientation orientati
                 return tr("Correct");
             case 2:
                 return tr("All");
+            case 3:
+                return tr("Time");
             default:
                 Q_UNIMPLEMENTED();
                 break;

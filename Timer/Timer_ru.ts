@@ -73,19 +73,24 @@
 <context>
     <name>StatisticsTableModel</name>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="61"/>
+        <location filename="StatisticsTableModel.cpp" line="68"/>
         <source>Error</source>
         <translation>Ошибок</translation>
     </message>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="63"/>
+        <location filename="StatisticsTableModel.cpp" line="70"/>
         <source>Correct</source>
         <translation>Правильно</translation>
     </message>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="65"/>
+        <location filename="StatisticsTableModel.cpp" line="72"/>
         <source>All</source>
         <translation>Всего</translation>
+    </message>
+    <message>
+        <location filename="StatisticsTableModel.cpp" line="74"/>
+        <source>Time</source>
+        <translation>Тайминги</translation>
     </message>
 </context>
 <context>
@@ -187,38 +192,38 @@
         <translation>Конец.</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="228"/>
+        <location filename="TimerMainWindow.cpp" line="231"/>
         <source>Open text file</source>
         <translation>Открытие текстового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="229"/>
+        <location filename="TimerMainWindow.cpp" line="232"/>
         <source>Text Files (%1)</source>
         <translation>Текстовый файл (%1)</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="255"/>
+        <location filename="TimerMainWindow.cpp" line="258"/>
         <source>Select font</source>
         <translation>Выбор шрифта отображения строки</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="262"/>
+        <location filename="TimerMainWindow.cpp" line="265"/>
         <source>Select count rounds</source>
         <translation>Выбор максимального значения раундов</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="263"/>
+        <location filename="TimerMainWindow.cpp" line="266"/>
         <source>Count rounds:</source>
         <translation>Максимальное значения раундов:</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="311"/>
+        <location filename="TimerMainWindow.cpp" line="314"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
         <location filename="TimerMainWindow.ui" line="186"/>
-        <location filename="TimerMainWindow.cpp" line="316"/>
+        <location filename="TimerMainWindow.cpp" line="319"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>

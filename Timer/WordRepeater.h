@@ -40,7 +40,7 @@ public:
     //has errors for next round
     bool hasNextRound() const;
     //start new round
-    void startNewRound();
+    void startNewRound(const QPair<qreal, qreal> timing);
     void resetRound();
     //return count of started rounds
     int currentRound() const;

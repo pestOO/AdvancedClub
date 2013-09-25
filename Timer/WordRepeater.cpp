@@ -81,7 +81,7 @@ bool WordRepeater::hasNextRound() const
             //and has unmarked words
             currentList().hasNextRound ();
     }
-void WordRepeater::startNewRound()
+void WordRepeater::startNewRound(const QPair<qreal, qreal> timing)
     {
     //new round shouldn't be stareted with maximum
     Q_ASSERT(wordListsStatistics.size () < maxRounds);
@@ -92,6 +92,8 @@ void WordRepeater::startNewRound()
         WordsListStatistic newWordList(wordListsStatistics.last ().getWordsError ());
         wordListsStatistics.append (newWordList);
         }
+    Q_ASSERT(!wordListsStatistics.isEmpty ());
+    return wordListsStatistics.last ().setTiming (timing);
     }
 void WordRepeater::resetRound()
     {
