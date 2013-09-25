@@ -19,7 +19,7 @@ class DialogWordStatistics : public QDialog
 {
     Q_OBJECT
 public:
-    explicit DialogWordStatistics(const WordRepeater& wordList, QWidget *parent = 0);
+    explicit DialogWordStatistics(const WordRepeater& wordList, const bool showTimeInfo, QWidget *parent = 0);
     ~DialogWordStatistics();
 private:
     Ui::DialogWordStatistics *ui;

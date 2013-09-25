@@ -33,14 +33,17 @@ public:
     //no words was loaded
     bool isEmpty() const;
 
-    //set maximum count of rounds
+    //set/get maximum count of rounds
     void setMaxRounds(const int rounds);
+    int getMaxRounds() const;
 
     //has errors for next round
     bool hasNextRound() const;
     //start new round
     void startNewRound();
     void resetRound();
+    //return count of started rounds
+    int currentRound() const;
 
     //statistics getters
     int roundCounts() const;

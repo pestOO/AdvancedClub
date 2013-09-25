@@ -68,6 +68,10 @@ void WordRepeater::setMaxRounds(const int rounds)
     Q_ASSERT(rounds>0); Q_ASSERT(rounds<9999);
     maxRounds = rounds;
     }
+int WordRepeater::getMaxRounds() const
+    {
+    return maxRounds;
+    }
 bool WordRepeater::hasNextRound() const
     {
     //new round
@@ -92,6 +96,10 @@ void WordRepeater::startNewRound()
 void WordRepeater::resetRound()
     {
     wordListsStatistics.removeLast ();
+    }
+int WordRepeater::currentRound() const
+    {
+    return wordListsStatistics.size ();
     }
 int WordRepeater::roundCounts() const
     {

@@ -22,6 +22,16 @@
         <translation>Статистика</translation>
     </message>
     <message>
+        <location filename="DialogWordStatistics.ui" line="31"/>
+        <source>Time 1 and 2 have been changed.</source>
+        <translation>Время 1 и 2 были увеличины в 1,5 раза.</translation>
+    </message>
+    <message>
+        <location filename="DialogWordStatistics.ui" line="43"/>
+        <source>Round : </source>
+        <translation>Раунд : </translation>
+    </message>
+    <message>
         <location filename="DialogWordStatistics.cpp" line="37"/>
         <source>Ok</source>
         <translation>Закрыть</translation>

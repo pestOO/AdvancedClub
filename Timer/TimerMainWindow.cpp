@@ -138,7 +138,7 @@ void TimerMainWindow::nextAction()
             {
             stopTimers(false);
             setLabelWord(tr("That's all!"));
-            showStatistics();
+            showStatistics(true);
             return;
             }
         }
@@ -159,7 +159,7 @@ void TimerMainWindow::on_actionStart_triggered()
             wordlist.startNewRound ();
         else
             {
-            showStatistics();
+            showStatistics(false);
             return;
             }
         }
@@ -292,9 +292,9 @@ void TimerMainWindow::clearLabelWord()
     {
     ui->labelWord->setText(QLatin1Literal(""));
     }
-void TimerMainWindow::showStatistics()
+void TimerMainWindow::showStatistics(const bool showTimeChangeInfo)
     {
-    DialogWordStatistics dialog(wordlist, this);
+    DialogWordStatistics dialog(wordlist, showTimeChangeInfo, this);
     dialog.exec ();
     }
 void TimerMainWindow::play()
