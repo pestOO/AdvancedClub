@@ -63,12 +63,24 @@ bool WordRepeater::isEmpty() const
     {
     return originalWordList.isEmpty ();
     }
+void WordRepeater::setMaxRounds(const int rounds)
+    {
+    Q_ASSERT(rounds>0); Q_ASSERT(rounds<9999);
+    maxRounds = rounds;
+    }
 bool WordRepeater::hasNextRound() const
     {
-    return currentList().hasNextRound ();
+    //new round
+    return
+            //if rounds less max count
+            wordListsStatistics.size () < maxRounds &&
+            //and has unmarked words
+            currentList().hasNextRound ();
     }
 void WordRepeater::startNewRound()
     {
+    //new round shouldn't be stareted with maximum
+    Q_ASSERT(wordListsStatistics.size () < maxRounds);
     if(wordListsStatistics.isEmpty ())
         wordListsStatistics.append (originalWordList);
     else

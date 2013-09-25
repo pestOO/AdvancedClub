@@ -12,6 +12,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QFontDialog>
+#include <QInputDialog>
 #include <QHBoxLayout>
 #include "SelectAudioFile.h"
 #include "DialogWordStatistics.h"
@@ -42,6 +43,8 @@ TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new 
 
     const QFont wordFont = ui->labelWord->font();
     ui->labelWord->setFont(settings.value(settingWordFont, wordFont).value<QFont>());
+
+    wordlist.setMaxRounds (settings.value(settingRoundsCount, WordRepeater::maxRoundsDefault).toInt ());
 
     clearLabelWord ();
     updatetLabelTime();
@@ -252,6 +255,17 @@ void TimerMainWindow::on_actionChange_text_font_triggered()
     dialog.setWindowTitle (tr("Select font"));
     if(dialog.exec() == QDialog::Accepted)
         ui->labelWord->setFont(dialog.selectedFont());
+    }
+void TimerMainWindow::on_actionChange_count_rounds_triggered()
+    {
+    bool ok;
+    const int rounds = QInputDialog::getInt(this, tr("Select count rounds"),
+                                         tr("Count rounds:"), 3, 2, 100, 1, &ok);
+    if (ok)
+        {
+        settings.setValue (settingRoundsCount, rounds);
+        wordlist.setMaxRounds (rounds);
+        }
     }
 qreal TimerMainWindow::getmSecsByBoxs() const
     {

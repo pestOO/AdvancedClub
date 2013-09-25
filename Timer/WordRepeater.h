@@ -33,6 +33,9 @@ public:
     //no words was loaded
     bool isEmpty() const;
 
+    //set maximum count of rounds
+    void setMaxRounds(const int rounds);
+
     //has errors for next round
     bool hasNextRound() const;
     //start new round
@@ -45,11 +48,14 @@ public:
 
     //clear all data;
     void clear();
+
+    static const int maxRoundsDefault {3};
 private:
     Q_DISABLE_COPY(WordRepeater)
     WordsListStatistic originalWordList;
     QList<WordsListStatistic> wordListsStatistics;
     WordsListStatistic& currentList();
     const WordsListStatistic& currentList() const;
+    int maxRounds{maxRoundsDefault};
 };
 #endif // WORDREPEATER_H

@@ -49,8 +49,10 @@ private slots:
     void on_actionClear_sound_triggered();
     void on_actionClear_text_file_triggered();
     void on_actionChange_text_font_triggered();
+    void on_actionChange_count_rounds_triggered();
     void on_buttonPause_clicked();
     void on_buttonNext_clicked();
+
 protected:
     qreal getmSecsByBoxs() const;
     qreal getSecsByBoxs() const;
@@ -71,6 +73,7 @@ private:
     const QLatin1Literal settingConstSecs   = QLatin1Literal("ConstSecs");
     const QLatin1Literal settingLetterSecs  = QLatin1Literal("LetterSecs");
     const QLatin1Literal settingWordFont    = QLatin1Literal("WordFont");
+    const QLatin1Literal settingRoundsCount = QLatin1Literal("RoundsCount");
     QSettings settings;
     WordRepeater wordlist;
 };

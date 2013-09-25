@@ -4,12 +4,12 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="TimerMainWindow.cpp" line="23"/>
+        <location filename="TimerMainWindow.cpp" line="24"/>
         <source>About</source>
         <translation>О приложении</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="30"/>
+        <location filename="TimerMainWindow.cpp" line="31"/>
         <source>Made by %1 for training club %2.</source>
         <translation>Выполнено %1 по заказу тренингового клуба %2.</translation>
     </message>
@@ -117,83 +117,98 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="247"/>
+        <location filename="TimerMainWindow.ui" line="248"/>
         <source>Run </source>
         <translation>Запуск</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="255"/>
+        <location filename="TimerMainWindow.ui" line="256"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="263"/>
+        <location filename="TimerMainWindow.ui" line="264"/>
         <source>Select sound</source>
         <translation>Выбор звукового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="271"/>
+        <location filename="TimerMainWindow.ui" line="272"/>
         <source>Select text file</source>
         <translation>Выбор текстового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="279"/>
+        <location filename="TimerMainWindow.ui" line="280"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="287"/>
+        <location filename="TimerMainWindow.ui" line="288"/>
         <source>Clear sound</source>
         <translation>Сбросить звуковой файл</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="295"/>
+        <location filename="TimerMainWindow.ui" line="296"/>
         <source>Clear text file</source>
         <translation>Сбросить текстовый файл</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.ui" line="303"/>
+        <location filename="TimerMainWindow.ui" line="304"/>
         <source>Change text font</source>
-        <translation>Фон слова</translation>
+        <translation>Изменение шрифта слова</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="55"/>
+        <location filename="TimerMainWindow.ui" line="312"/>
+        <source>Change count rounds</source>
+        <translation>Изменение максимального кол-ва раундов</translation>
+    </message>
+    <message>
+        <location filename="TimerMainWindow.cpp" line="58"/>
         <source>No sound</source>
         <translation>Нет стандартного звука</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="56"/>
+        <location filename="TimerMainWindow.cpp" line="59"/>
         <source>Coudn&apos;t find file %1%2Choose another one!</source>
         <translation>Не возможно открыть файл %1%2Выберете другой звуковой файл!</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="135"/>
+        <location filename="TimerMainWindow.cpp" line="140"/>
         <source>That&apos;s all!</source>
         <translation>Конец.</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="211"/>
+        <location filename="TimerMainWindow.cpp" line="228"/>
         <source>Open text file</source>
         <translation>Открытие текстового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="213"/>
+        <location filename="TimerMainWindow.cpp" line="229"/>
         <source>Text Files (%1)</source>
         <translation>Текстовый файл (%1)</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="239"/>
+        <location filename="TimerMainWindow.cpp" line="255"/>
         <source>Select font</source>
         <translation>Выбор шрифта отображения строки</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="284"/>
+        <location filename="TimerMainWindow.cpp" line="262"/>
+        <source>Select count rounds</source>
+        <translation>Выбор максимального значения раундов</translation>
+    </message>
+    <message>
+        <location filename="TimerMainWindow.cpp" line="263"/>
+        <source>Count rounds:</source>
+        <translation>Максимальное значения раундов:</translation>
+    </message>
+    <message>
+        <location filename="TimerMainWindow.cpp" line="311"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
         <location filename="TimerMainWindow.ui" line="186"/>
-        <location filename="TimerMainWindow.cpp" line="289"/>
+        <location filename="TimerMainWindow.cpp" line="316"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
