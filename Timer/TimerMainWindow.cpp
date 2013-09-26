@@ -309,6 +309,7 @@ void TimerMainWindow::play()
     }
 void TimerMainWindow::on_buttonPause_clicked()
     {
+    static int pause_left_msecs = 0;
     if(taskTimer->isActive ())
         {
         pause_left_msecs = taskTimer->remainingTime();
@@ -323,9 +324,11 @@ void TimerMainWindow::on_buttonPause_clicked()
     }
 void TimerMainWindow::on_buttonNext_clicked()
     {
+    Q_ASSERT(taskTimer->remainingTime() > 0.0);
+    const qreal secsElapsed = (taskTimer->interval() - taskTimer->remainingTime())/1000;
     checkPlayPauseButton ();
     if(isTextMode ())
-        wordlist.gotoNextWord (true);
+        wordlist.gotoNextWord (true, secsElapsed);
     player.stop ();
     taskTimer->stop();
     updatetLabelTime ();

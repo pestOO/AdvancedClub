@@ -40,13 +40,16 @@ QString WordsListStatistic::word() const
     Q_ASSERT(!words.isEmpty());
     return words.first ();
     }
-void WordsListStatistic::gotoNextWord(const bool currentIsCorrect)
+void WordsListStatistic::gotoNextWord(const bool currentIsCorrect, const qreal time)
     {
     Q_ASSERT(!words.isEmpty());
     if(words.isEmpty())
         return;
     if(currentIsCorrect)
+        {
         wordsCorrect.append (words.takeFirst ());
+        correctTimes.append (time);
+        }
     else
         wordsError.append (words.takeFirst ());
     }
@@ -73,4 +76,8 @@ void WordsListStatistic::setTiming(PairTiming time)
 WordsListStatistic::PairTiming WordsListStatistic::getTiming() const
     {
     return timing;
+    }
+qreal WordsListStatistic::meanTimeCorrect() const
+    {
+    return std::accumulate(correctTimes.begin (), correctTimes.end (), 0.0) / correctTimes.size ();
     }

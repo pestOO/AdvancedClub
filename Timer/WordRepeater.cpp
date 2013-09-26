@@ -53,11 +53,12 @@ QString WordRepeater::word() const
         return QString();
     return wordListsStatistics.last ().word ();
     }
-void WordRepeater::gotoNextWord(const bool currentIsCorrect)
+
+void WordRepeater::gotoNextWord(const bool currentIsCorrect, const qreal time)
     {
     Q_ASSERT(!wordListsStatistics.isEmpty ());
     if(!wordListsStatistics.isEmpty ())
-        wordListsStatistics.last ().gotoNextWord (currentIsCorrect);
+        wordListsStatistics.last ().gotoNextWord (currentIsCorrect, time);
     }
 bool WordRepeater::isEmpty() const
     {

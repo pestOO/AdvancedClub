@@ -30,7 +30,7 @@ public:
     //return current unmared word
     QString word() const;
     //set word un/correct and change current
-    void gotoNextWord(const bool currentIsCorrect);
+    void gotoNextWord(const bool currentIsCorrect = false, const qreal time = 0.0);
     //no words was loaded
     bool isEmpty() const;
 
@@ -41,11 +41,13 @@ public:
 
     void setTiming(PairTiming time);
     PairTiming getTiming() const;
+
+    qreal meanTimeCorrect() const;
 private:
     StringList words;
     StringList wordsError;
     StringList wordsCorrect;
     PairTiming timing;
-    QList<QPair<qreal,qreal>> correctTimes;
+    QList<qreal> correctTimes;
 };
 #endif // WORDSLISTSTATISTIC_H

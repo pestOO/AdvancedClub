@@ -73,24 +73,29 @@
 <context>
     <name>StatisticsTableModel</name>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="68"/>
+        <location filename="StatisticsTableModel.cpp" line="70"/>
         <source>Error</source>
         <translation>Ошибок</translation>
     </message>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="70"/>
+        <location filename="StatisticsTableModel.cpp" line="72"/>
         <source>Correct</source>
         <translation>Правильно</translation>
     </message>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="72"/>
+        <location filename="StatisticsTableModel.cpp" line="74"/>
         <source>All</source>
         <translation>Всего</translation>
     </message>
     <message>
-        <location filename="StatisticsTableModel.cpp" line="74"/>
-        <source>Time</source>
+        <location filename="StatisticsTableModel.cpp" line="76"/>
+        <source>Timings</source>
         <translation>Тайминги</translation>
+    </message>
+    <message>
+        <location filename="StatisticsTableModel.cpp" line="78"/>
+        <source>Mean time</source>
+        <translation>Среднее время</translation>
     </message>
 </context>
 <context>
@@ -187,43 +192,43 @@
         <translation>Не возможно открыть файл %1%2Выберете другой звуковой файл!</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="140"/>
+        <location filename="TimerMainWindow.cpp" line="145"/>
         <source>That&apos;s all!</source>
         <translation>Конец.</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="231"/>
+        <location filename="TimerMainWindow.cpp" line="233"/>
         <source>Open text file</source>
         <translation>Открытие текстового файла</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="232"/>
+        <location filename="TimerMainWindow.cpp" line="234"/>
         <source>Text Files (%1)</source>
         <translation>Текстовый файл (%1)</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="258"/>
+        <location filename="TimerMainWindow.cpp" line="260"/>
         <source>Select font</source>
         <translation>Выбор шрифта отображения строки</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="265"/>
+        <location filename="TimerMainWindow.cpp" line="267"/>
         <source>Select count rounds</source>
         <translation>Выбор максимального значения раундов</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="266"/>
+        <location filename="TimerMainWindow.cpp" line="268"/>
         <source>Count rounds:</source>
         <translation>Максимальное значения раундов:</translation>
     </message>
     <message>
-        <location filename="TimerMainWindow.cpp" line="314"/>
+        <location filename="TimerMainWindow.cpp" line="317"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
         <location filename="TimerMainWindow.ui" line="186"/>
-        <location filename="TimerMainWindow.cpp" line="319"/>
+        <location filename="TimerMainWindow.cpp" line="322"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>

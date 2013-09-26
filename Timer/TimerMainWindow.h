@@ -64,10 +64,11 @@ protected:
 private:
     Ui::TimerMainWindow *ui;
     QTime time;
-    int pause_left_msecs = 0;
     const QString soundWay = QLatin1Literal("audio.mp3");
     QMediaPlayer player;
+    //timer for makeing user work (show, play)
     QTimer* taskTimer   = {new QTimer(this)};
+    //system timer for updateing gui #taskTimer data
     QTimer* updateTimer = {new QTimer(this)};
     const QLatin1Literal settingTextWay     = QLatin1Literal("TextWay");
     const QLatin1Literal settingConstSecs   = QLatin1Literal("ConstSecs");
