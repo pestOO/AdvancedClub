@@ -43,11 +43,11 @@ DialogWordStatistics::DialogWordStatistics(const WordRepeater& wordList, const b
     cornerButton->installEventFilter(this);
 
     ui->tableView->setModel( new StatisticsTableModel(wordList));
-    ui->tableView->clearSelection ();
-
     QFont appFont = qApp->font();
     appFont.setFamily ("Lucida Console");
     ui->tableView->setFont (appFont);
+    ui->tableView->resizeColumnsToContents ();
+    ui->tableView->clearSelection ();
 
     const int roundCurrent = wordList.currentRound ();
     const int roundMax = wordList.getMaxRounds ();
