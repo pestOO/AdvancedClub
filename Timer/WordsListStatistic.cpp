@@ -79,5 +79,7 @@ WordsListStatistic::PairTiming WordsListStatistic::getTiming() const
     }
 qreal WordsListStatistic::meanTimeCorrect() const
     {
+    if(correctTimes.isEmpty ())
+        return 0;
     return std::accumulate(correctTimes.begin (), correctTimes.end (), 0.0) / correctTimes.size ();
     }
