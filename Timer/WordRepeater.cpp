@@ -39,12 +39,12 @@ int WordRepeater::countCorrects() const
     {
     return currentList ().countWords ();
     }
-bool WordRepeater::hasNext()
+bool WordRepeater::hasWord()
     {
     Q_ASSERT(!wordListsStatistics.isEmpty ());
     if(wordListsStatistics.isEmpty ())
         return false;
-    return wordListsStatistics.last ().hasNext ();
+    return wordListsStatistics.last ().hasWord ();
     }
 QString WordRepeater::word() const
     {
@@ -53,11 +53,11 @@ QString WordRepeater::word() const
         return QString();
     return wordListsStatistics.last ().word ();
     }
-void WordRepeater::setErrorState(const bool isCorrect)
+void WordRepeater::gotoNextWord(const bool currentIsCorrect)
     {
     Q_ASSERT(!wordListsStatistics.isEmpty ());
     if(!wordListsStatistics.isEmpty ())
-        wordListsStatistics.last ().setErrorState (isCorrect);
+        wordListsStatistics.last ().gotoNextWord (isCorrect);
     }
 bool WordRepeater::isEmpty() const
     {

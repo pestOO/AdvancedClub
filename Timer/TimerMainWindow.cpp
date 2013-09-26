@@ -118,7 +118,7 @@ void TimerMainWindow::updatetLabelTime()
 void TimerMainWindow::tick()
     {
     if(isTextMode ())
-        wordlist.setErrorState (false);
+        wordlist.gotoNextWord (false);
     nextAction();
     }
 void TimerMainWindow::nextAction()
@@ -128,7 +128,7 @@ void TimerMainWindow::nextAction()
     //text mode
     else
         {
-        if(wordlist.hasNext ())
+        if(wordlist.hasWord ())
             {
             setLabelWord(wordlist.word ());
             if(ui->checkBoxSoundForWord->isChecked())
@@ -325,7 +325,7 @@ void TimerMainWindow::on_buttonNext_clicked()
     {
     checkPlayPauseButton ();
     if(isTextMode ())
-        wordlist.setErrorState (true);
+        wordlist.gotoNextWord (true);
     player.stop ();
     taskTimer->stop();
     updatetLabelTime ();

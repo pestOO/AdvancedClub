@@ -25,11 +25,11 @@ public:
     int countErrors() const;
     int countCorrects() const;
     //has one more unmarked word
-    bool hasNext();
+    bool hasWord();
     //return current unmared word
     QString word() const;
     //set word un/correct and change current
-    void setErrorState(const bool isCorrect);
+    void gotoNextWord(const bool currentIsCorrect);
     //no words was loaded
     bool isEmpty() const;
 

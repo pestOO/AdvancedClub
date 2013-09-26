@@ -31,7 +31,7 @@ int WordsListStatistic::countCorrects() const
     {
     return wordsCorrect.count ();
     }
-bool WordsListStatistic::hasNext()
+bool WordsListStatistic::hasWord()
     {
     return !words.isEmpty ();
     }
@@ -40,12 +40,12 @@ QString WordsListStatistic::word() const
     Q_ASSERT(!words.isEmpty());
     return words.first ();
     }
-void WordsListStatistic::setErrorState(const bool isCorrect)
+void WordsListStatistic::gotoNextWord(const bool currentIsCorrect)
     {
     Q_ASSERT(!words.isEmpty());
     if(words.isEmpty())
         return;
-    if(isCorrect)
+    if(currentIsCorrect)
         wordsCorrect.append (words.takeFirst ());
     else
         wordsError.append (words.takeFirst ());
