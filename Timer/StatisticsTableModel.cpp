@@ -53,7 +53,7 @@ QVariant StatisticsTableModel::data(const QModelIndex & index, int role) const
                             .arg (time.second, 4, 'f', 2);
                     }
                 case 4:
-                    return  QString(" %1 ").arg (roundInfo.meanTimeCorrect ());
+                    return  QString(" %1 ").arg (roundInfo.meanTimeCorrect (), 5, 'f', 2);
                 default:
                     Q_UNIMPLEMENTED();
                     break;
