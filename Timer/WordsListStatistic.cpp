@@ -64,13 +64,13 @@ WordsListStatistic::StringList WordsListStatistic::getWordsError() const
     Q_ASSERT(!wordsError.isEmpty());
     return wordsError;
     }
-void WordsListStatistic::setTiming(const QPair<qreal, qreal> time)
+void WordsListStatistic::setTiming(PairTiming time)
     {
     Q_ASSERT(time.first > 0); Q_ASSERT(time.first < 9999);
     Q_ASSERT(time.second < 9999);
     timing = time;
     }
-QPair<qreal, qreal> WordsListStatistic::getTiming() const
+WordsListStatistic::PairTiming WordsListStatistic::getTiming() const
     {
     return timing;
     }

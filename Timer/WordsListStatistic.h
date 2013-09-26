@@ -17,6 +17,7 @@
 class WordsListStatistic {
 public:
     typedef QList<QString> StringList;
+    typedef QPair<qreal,qreal> PairTiming;
     WordsListStatistic();
     WordsListStatistic(const StringList & newWords);
     void addWord(const QString & word);
@@ -38,12 +39,13 @@ public:
     //return words for next round
     StringList getWordsError() const;
 
-    void setTiming(const QPair<qreal,qreal> time);
-    QPair<qreal,qreal> getTiming() const;
+    void setTiming(PairTiming time);
+    PairTiming getTiming() const;
 private:
     StringList words;
     StringList wordsError;
     StringList wordsCorrect;
-    QPair<qreal,qreal> timing;
+    PairTiming timing;
+    QList<QPair<qreal,qreal>> correctTimes;
 };
 #endif // WORDSLISTSTATISTIC_H
