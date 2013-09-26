@@ -57,7 +57,7 @@ void WordRepeater::gotoNextWord(const bool currentIsCorrect)
     {
     Q_ASSERT(!wordListsStatistics.isEmpty ());
     if(!wordListsStatistics.isEmpty ())
-        wordListsStatistics.last ().gotoNextWord (isCorrect);
+        wordListsStatistics.last ().gotoNextWord (currentIsCorrect);
     }
 bool WordRepeater::isEmpty() const
     {
