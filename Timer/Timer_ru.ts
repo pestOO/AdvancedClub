@@ -90,7 +90,7 @@
     <message>
         <location filename="StatisticsTableModel.cpp" line="76"/>
         <source>Timings</source>
-        <translation>Тайминги</translation>
+        <translation>Интервалы</translation>
     </message>
     <message>
         <location filename="StatisticsTableModel.cpp" line="78"/>
