@@ -136,6 +136,11 @@ void TimerMainWindow::nextAction()
             }
         else
             {
+            //set last timing from UI
+            wordlist.setRoundTimings (
+                        //get timer data
+                        qMakePair(ui->boxConstSeconds->value(),
+                                  ui->boxLetterSeconds->value()));
             stopTimers(false);
             setLabelWord(tr("That's all!"));
             showStatistics(true);
@@ -156,10 +161,7 @@ void TimerMainWindow::on_actionStart_triggered()
     if(isTextMode())
         {
         if(wordlist.hasNextRound ())
-            wordlist.startNewRound (
-                        //set new timer data
-                        qMakePair(ui->boxConstSeconds->value(),
-                                  ui->boxLetterSeconds->value()));
+            wordlist.startNewRound ();
         else
             {
             showStatistics(false);

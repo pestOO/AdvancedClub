@@ -15,7 +15,7 @@ StatisticsTableModel::StatisticsTableModel(const WordRepeater & wordList, QObjec
     }
 int StatisticsTableModel::rowCount(const QModelIndex &) const
     {
-    return wordStatistics.roundCounts ();
+    return wordStatistics.countsRounds ();
     }
 int StatisticsTableModel::columnCount(const QModelIndex &) const
     {

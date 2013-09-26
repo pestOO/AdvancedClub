@@ -40,13 +40,14 @@ public:
     //has errors for next round
     bool hasNextRound() const;
     //start new round
-    void startNewRound(const QPair<qreal, qreal> timing);
+    void startNewRound();
+    void setRoundTimings(const QPair<qreal, qreal> timing);
     void resetRound();
     //return count of started rounds
     int currentRound() const;
 
     //statistics getters
-    int roundCounts() const;
+    int countsRounds() const;
     const WordsListStatistic& getRound(int i) const;
 
     //clear all data;
