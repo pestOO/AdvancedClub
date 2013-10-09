@@ -47,7 +47,8 @@ void SelectAudioFile::selectOtherAudio(bool)
     const QString newSoundWay =
             QFileDialog::getOpenFileName(this, windowTitle (),
                                          settings.value (settingSoundWay).toString (),
-                                         tr("Sound Files (%1)").arg (QLatin1Literal("*.wav *.mp3")));
+                                         tr("Sound Files (%1)").arg (
+                                             AudioFilesListModel::getAudioFileSuufixList().join(QChar::Space)));
     if(!newSoundWay.isEmpty())
         {
         settings.setValue (settingSoundWay, newSoundWay);

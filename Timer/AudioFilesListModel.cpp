@@ -12,12 +12,32 @@
 AudioFilesListModel::AudioFilesListModel(QObject *parent) :
     QAbstractListModel(parent)
     {
-    const QString windowsWay = qgetenv("WINDIR");
     addFileByDir(QDir());
+#ifdef Q_OS_WIN
+    const QString windowsWay = qgetenv("WINDIR");
     QDir dir(windowsWay);
     if(dir.cd("Media"))
        addFileByDir(dir);
-    }
+#elif defined Q_OS_MAC
+    const auto searchFunctor = [&](const QString& way) {
+        addFileByDir(way);
+        addFileByDir(way + QDir::separator() + "Library");
+        addFileByDir(way + QDir::separator() + "Library" + QDir::separator() + "Sounds");
+        addFileByDir(way + QDir::separator() + "Music");
+        addFileByDir(way + QDir::separator() + "Music" + QDir::separator() + "iTunes");
+    };
+    searchFunctor("/");
+    searchFunctor("/System");
+    searchFunctor(QDir::homePath());
+#else
+    Q_STATIC_ASSERT("not implemented for this platform");
+#endif
+}
+
+AudioFilesListModel::~AudioFilesListModel()
+{
+    player.stop ();
+}
 int AudioFilesListModel::rowCount(const QModelIndex & ) const
     {
     return files.size ();
@@ -53,12 +73,16 @@ QModelIndex AudioFilesListModel::addFile(const QString & file)
         files << newFileInfo;
     layoutChanged ();
     return createIndex (files.indexOf (newFileInfo), 0);
+}
+
+QStringList AudioFilesListModel::getAudioFileSuufixList()
+    {
+    return QStringList{"*.mp3","*.wav", "*.aiff", "*.aif"};
     }
 void AudioFilesListModel::addFileByDir(const QDir dir)
     {
-    const QStringList filters{"*.mp3","*.wav"};
     const QFileInfoList newFiles =
-            dir.entryInfoList (filters, QDir::Files | QDir::NoDotAndDotDot);
+            dir.entryInfoList (getAudioFileSuufixList(), QDir::Files | QDir::NoDotAndDotDot);
     for(const QFileInfo& info : newFiles)
         if(!files.contains (info))
             files << info;
