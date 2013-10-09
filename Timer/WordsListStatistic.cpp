@@ -8,6 +8,9 @@
 ** Created 20.09.2013 by Elisey Zamakhov.
 ****************************************************************************/
 #include "WordsListStatistic.h"
+#ifdef Q_OS_MAC
+#include <numeric>
+#endif
 
 WordsListStatistic::WordsListStatistic()
     {

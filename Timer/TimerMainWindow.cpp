@@ -226,7 +226,7 @@ void TimerMainWindow::on_actionChoode_text_file_triggered()
             if(dir.exists (txtFolder))
                 return dir.absoluteFilePath (txtFolder);
             }
-        return textWay;
+        return QString(textWay);
         };
     const QString oldTextWay = getOldWay();
     const QString newTextWay =
