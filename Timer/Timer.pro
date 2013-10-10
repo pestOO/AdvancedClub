@@ -5,12 +5,14 @@
 #-------------------------------------------------
 
 TARGET   = Timer
-QT      += core gui widgets multimedia
+QT      += core gui widgets multimedia xml
 CONFIG  += exceptions c++11
 TEMPLATE = app
 
 TRANSLATIONS = Timer_ru.ts
-RC_FILE   += res/advance_icon.rc
+RC_FILE   += res\advance_icon.rc
+
+ICON = res/advance.icns
 
 SOURCES += \
     main.cpp \
