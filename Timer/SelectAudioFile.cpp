@@ -17,7 +17,7 @@ SelectAudioFile::SelectAudioFile(QWidget *parent) :
     ui(new Ui::SelectAudioFile)
     {
     ui->setupUi(this);
-    ui->listView->setModel (filesModel = new AudioFilesListModel(this));
+    ui->listView->setModel (filesModel = new AudioFilesListModel(ui->listView));
 
     ui->buttonBox->addButton (tr("Cansel"), QDialogButtonBox::RejectRole);
     ui->buttonBox->addButton (tr("Select"), QDialogButtonBox::AcceptRole);

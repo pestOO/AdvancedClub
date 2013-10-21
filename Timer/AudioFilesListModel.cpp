@@ -32,12 +32,7 @@ AudioFilesListModel::AudioFilesListModel(QObject *parent) :
 #else
     Q_STATIC_ASSERT("not implemented for this platform");
 #endif
-}
-
-AudioFilesListModel::~AudioFilesListModel()
-{
-    player.stop ();
-}
+    }
 int AudioFilesListModel::rowCount(const QModelIndex & ) const
     {
     return files.size ();
@@ -60,8 +55,8 @@ void AudioFilesListModel::playAudio(const QModelIndex & index)
     {
     if(index.isValid ())
         {
-        player.stop ();
         const QString fileWay = files.at (index.row ()).absoluteFilePath ();
+        player.stop ();
         player.setMedia(QUrl::fromLocalFile(fileWay));
         player.play ();
         }

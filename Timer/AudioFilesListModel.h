@@ -19,7 +19,6 @@ class AudioFilesListModel : public QAbstractListModel
     Q_OBJECT
 public:
     explicit AudioFilesListModel(QObject *parent = 0);
-    ~AudioFilesListModel();
     int rowCount (const QModelIndex &) const override;
     QVariant data (const QModelIndex &index, int role) const override;
     QString getFile(const QModelIndex &index) const;

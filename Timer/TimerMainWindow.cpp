@@ -53,8 +53,10 @@ TimerMainWindow::TimerMainWindow(QWidget *parent) : QMainWindow(parent), ui(new 
     updateTimer->setInterval(100);
     updateTimer->setSingleShot(false);
     taskTimer->stop ();
-    setAudioFile(soundWay);
-    if(!QFile::exists (soundWay))
+    const QString absWay =  QFileInfo(soundWay).absoluteFilePath();
+    if(QFile::exists (absWay))
+        setAudioFile(absWay);
+    else
         QMessageBox::warning (this, tr("No sound"),
                               tr("Coudn't find file %1%2Choose another one!").
                               arg(soundWay).arg(QChar(QChar::LineFeed)));
@@ -286,7 +288,6 @@ void TimerMainWindow::setAudioFile(const QString & file)
     {
     player.setMedia(QUrl::fromLocalFile(file));
     }
-
 void TimerMainWindow::setLabelWord(const QString & word)
     {
     static QRegExp regExp("[\\r\\t]");
