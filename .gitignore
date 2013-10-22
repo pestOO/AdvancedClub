@@ -41,3 +41,5 @@ desktop.ini
 
 # Editors temporary files 
 *~
+
+Timer-builds/Makefile
