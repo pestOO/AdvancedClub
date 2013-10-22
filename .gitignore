@@ -23,6 +23,7 @@ ui_*.h
 # Debug and Release directories (created under Windows, not Linux)
 Debug/
 Release/
+Timer-builds/
 
 # .log files (usually created by QtTest - thanks to VestniK)
 *.log
@@ -41,5 +42,3 @@ desktop.ini
 
 # Editors temporary files 
 *~
-
-Timer-builds/Makefile
