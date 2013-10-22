@@ -51,3 +51,8 @@ QMAKE_CXXFLAGS += \
 #    -Weffc++ \	#a lot of warn on QObjects
 #    -Wconversion -Wsign-conversion \  #try check Qt libs
     -Wall
+
+OTHER_FILES += \
+    CreateDMG.sh
+
+macx:warning(Don\'t forget add build step \"bash %{sourceDir}/CreateDMG.sh Timer.app\");
