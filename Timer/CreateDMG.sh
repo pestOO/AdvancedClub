@@ -20,8 +20,8 @@ if [ ! -f $audioFile ]
     exit 3
 fi
 
-docFile='Timer_Manual.doc'
-if [ ! -f $docFile$ ]
+docFile=Timer_Manual.doc
+if [ ! -f $docFile ]
   then
     echo "No doc file $docFile" > /dev/stderr
     exit 4
@@ -38,6 +38,7 @@ echo "Copy all data to temp folder"
 mkdir temp
 cp -r $appFolder temp
 cp -r $textFolder temp
+cp $docFile temp
 cp $audioFile temp
 
 echo "Update Qt libs and plugins"
