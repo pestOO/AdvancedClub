@@ -49,5 +49,6 @@ DMG=$appName.dmg
 rm $DMG
 hdiutil create $DMG -volname "$appName" -fs HFS+ -srcfolder "temp"
 
+cp $DMG '/Users/jhonmac/Google Drive/Advanced/'
 echo "All done"
 exit
