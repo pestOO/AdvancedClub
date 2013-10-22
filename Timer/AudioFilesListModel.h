@@ -28,6 +28,8 @@ public:
 private:
     void addFileByDir(const QDir dir);
     QFileInfoList files;
+#ifndef Q_OS_MAC
     QMediaPlayer player;
+#endif
 };
 #endif // AUDIOFILESLISTMODEL_H

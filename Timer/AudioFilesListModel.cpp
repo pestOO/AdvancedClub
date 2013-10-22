@@ -8,6 +8,7 @@
 ** Created 08.09.2013 by Elisey Zamakhov.
 ****************************************************************************/
 #include "AudioFilesListModel.h"
+#include <QSound>
 
 AudioFilesListModel::AudioFilesListModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -56,9 +57,13 @@ void AudioFilesListModel::playAudio(const QModelIndex & index)
     if(index.isValid ())
         {
         const QString fileWay = files.at (index.row ()).absoluteFilePath ();
+#ifdef Q_OS_MAC
+        QSound::play(fileWay);
+#else
         player.stop ();
         player.setMedia(QUrl::fromLocalFile(fileWay));
         player.play ();
+#endif
         }
     }
 QModelIndex AudioFilesListModel::addFile(const QString & file)
