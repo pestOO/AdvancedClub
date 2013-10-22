@@ -20,8 +20,17 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationDomain (QLatin1Literal("http://www.advance-club.ru/"));
     qDebug() << QApplication::applicationName() + QLatin1Literal(" starts.");
 
-    QApplication::addLibraryPath(QLatin1Literal("plugins"));
     QApplication app(argc, argv);
+#ifdef Q_OS_WIN
+    QApplication::addLibraryPath(QLatin1Literal("plugins"));
+#elif defined Q_OS_MAC
+    QDir dir(QApplication::applicationDirPath());
+    dir.cdUp();
+    dir.cd("Plugins");
+    QApplication::addLibraryPath(dir.absolutePath());
+#else
+    Q_STATIC_ASSERT("not implemented for this platform");
+#endif
     app.setWindowIcon(QIcon(":/icon.ico"));
     QTranslator ru_translation;
     if(!ru_translation.load("Timer_ru", ":/"))
