@@ -20,11 +20,18 @@ if [ ! -f $audioFile ]
     exit 3
 fi
 
+docFile='Timer_Manual.doc'
+if [ ! -f $docFile$ ]
+  then
+    echo "No doc file $docFile" > /dev/stderr
+    exit 4
+fi
+
 textFolder=TEXTFILES
 if [ ! -d $textFolder  ]
   then
     echo "No folder $textFolder" > /dev/stderr
-    exit 4
+    exit 5
 fi
 
 echo "Copy all data to temp folder"
